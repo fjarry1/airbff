@@ -1,5 +1,4 @@
 class ReservationsController < ApplicationController
-
   def index
     @reservations = Reservation.all
   end
@@ -36,6 +35,7 @@ class ReservationsController < ApplicationController
   end
 
   private
+
   def reservation_params
     params.require(:reservation).permit(:date, :comment, :specialty_id, :user_id)
   end
