@@ -3,7 +3,5 @@ Rails.application.routes.draw do
   root to: "pages#home"
 
   resources :specialties
-  # resources :reservation
-
-  get "profil", to: "pages#profil"
+  get "profil/:id", to: "pages#profil", as: "profil"
 end

@@ -1,3 +1,38 @@
-<h1>hello</h1>
-
-<%= current_user %>
+g<%age = Date.today.year - @user.birthdate.year%>
+<%age -= 1 if Date.today < @user.birthdate + age.years%>
+<div class="p-5 m-5">
+  <h1>Bonjour, <%=@user.first_name.capitalize%> <%=@user.last_name.capitalize%> !</h1>
+  <div class="row">
+    <div class="col-7 me-2">
+      <h3><%=age%> ans, <%=@user.city%></h3>
+      <p>Rating to add, XX reviews</p>
+      <%= link_to "Edit my profile", edit_user_registration_path, class:"btn border", style:"text-decoration: none; width: 30%;"%> <%#= penser a bverifier%>
+      <%=cl_image_tag @user.photo.key, height: 300, width: 300, crop: :fill, gravity: :face, class:'rounded-circle my-3'%>
+      <h3 class="my-1">Ma description<h3>
+      <p class="fs-6"><%=@user.description%></p>
+      <% if @user.specialties.first%>
+        <h3 class="my-1">Mes activitées favorites</h3>
+        <div class="d-flex">
+        <%@user.specialties.each do |service|%>
+          <p class="me-5"><%=service.title%></p>
+        <% end %>
+        </div>
+      <% end %>
+    </div>
+    <div class="ms-2 col-4">
+      <h2>Photos</h2>
+      <div>
+        <div class="d-inline-flex mb-1">
+          <%=cl_image_tag @user.photo.key, height: 120, width: 120, crop: :fill, gravity: :face, class:'m-1'%>
+          <%=cl_image_tag @user.photo.key, height: 120, width: 120, crop: :fill, gravity: :face, class:'m-1'%>
+          <%=cl_image_tag @user.photo.key, height: 120, width: 120, crop: :fill, gravity: :face, class:'m-1'%>
+        </div>
+        <div class="d-inline-flex">
+          <%=cl_image_tag @user.photo.key, height: 120, width: 120, crop: :fill, gravity: :face, class:'m-1'%>
+          <%=cl_image_tag @user.photo.key, height: 120, width: 120, crop: :fill, gravity: :face, class:'m-1'%>
+          <%=cl_image_tag @user.photo.key, height: 120, width: 120, crop: :fill, gravity: :face, class:'m-1'%>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
