@@ -13,15 +13,17 @@
       <ul class="navbar-nav me-auto">
         <% if user_signed_in? %>
           <li class="nav-item">
-            <%= link_to "Mettez-vous en location", "#", class: "nav-link" %>
+            <%= link_to "Proposez vos services", "#", class: "nav-link mt-2" %>
           </li>
-            <%= image_tag "", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+            <%= cl_image_tag current_user.photo.key, class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
             <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
               <%= link_to "Profil", profil_path, class: "dropdown-item" %>
               <%= link_to "Réservations", "#", class: "dropdown-item" %>
-              <%= link_to "Log out", "#", class: "dropdown-item", data: {turbo_method: :delete} %>
+              <%= link_to "Log out", destroy_user_session_path, class: "dropdown-item", data: {turbo_method: :delete} %>
             </div>
           </li>
+        <% else %>
+          <%= link_to "Sign-in / Sign-up", new_user_session_path, class: "nav-link" %>
           <% end %>
       </ul>
     </div>
