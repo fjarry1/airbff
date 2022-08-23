@@ -25,8 +25,8 @@ user = User.create!(email: "test@test.test",
              description: "Verrat de viande à chien de crisse de maudit de saint-cimonaque de sacréfice de crucifix d'astie de cochonnerie de saint-sacrament de purée de sacristi d'estique d'étole",
              gender: "M",
              city: "Paris")
-file = URI.open("https://www.instagram.com/p/ChH7kaqoQAl/")
-user.photo.attach(io: file, filename: "avatar.png", content_type: "image/png")
+file = URI.open("https://source.unsplash.com/random/?profile")
+user.photo.attach(io: file, filename: "avatar0.png", content_type: "image/png")
 user.save!
 
 puts "Fake it until you make it"
@@ -46,7 +46,7 @@ counter = 1
   file = URI.open("https://source.unsplash.com/random/?profile")
   user.photo.attach(io: file, filename: "avatar#{counter}.png", content_type: "image/png")
   user.save!
-  (0..2).to_a.sample.times do
+  (0..5).to_a.sample.times do
     puts "adding specialty"
     specialty = Specialty.create!(title: Faker::Hobby.activity,
                                   details: Faker::Lorem.sentence(word_count: (20..50).to_a.sample),
