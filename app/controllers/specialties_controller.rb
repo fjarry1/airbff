@@ -1,5 +1,9 @@
 class SpecialtiesController < ApplicationController
 
+
+  def index
+  end
+
   def new
     @specialty = Specialty.new
   end
