@@ -46,7 +46,7 @@ counter = 1
   file = URI.open("https://source.unsplash.com/random/?profile")
   user.photo.attach(io: file, filename: "avatar#{counter}.png", content_type: "image/png")
   user.save!
-  (0..2).to_a.sample.times do
+  (0..5).to_a.sample.times do
     puts "adding specialty"
     specialty = Specialty.create!(title: Faker::Hobby.activity,
                                   details: Faker::Lorem.sentence(word_count: (20..50).to_a.sample),
