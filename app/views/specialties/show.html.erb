@@ -1,1 +1,18 @@
-<h1>show</h1>
+<div class="banner-show" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://source.unsplash.com/random);">
+  <div class="container">
+    <h1><%= @specialty.title %></h1>
+  </div>
+</div>
+
+
+<div class="container">
+  <div class="infos-show">
+    <div class="details-show">
+      <p><%= @specialty.details %></p>
+      <p class="pricetag"><%= @specialty.price %>$/hour</p>
+    </div>
+    <div class="booking-placeholder">
+      <p>Make a new friend</p>
+    </div>
+  </div>
+</div>
