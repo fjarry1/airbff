@@ -1,11 +1,33 @@
-<h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
-
 
 <div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://res.cloudinary.com/ddat564z1/image/upload/v1661258915/AIR%20BFF/pexels-rodnae-productions-5543382_lipibr.jpg);">
   <div class="container">
     <h1>T'as vu ma <strong>grosse</strong> bannière ?</h1>
     <p>Des moments uniques à partager avec tes futurs BFF !</p>
     <a class="btn btn-warning" href="#" style="display:center">Ici ira notre future searchbar</a>
+  </div>
+</div>
+
+
+
+
+<div class="container">
+  <div class="title-container">
+    <p><strong>Découvre les expériences les plus originales avec tes futurs BFF !</strong></p>
+  </div>
+  <div class="cards">
+    <% @specialties.each do |specialty| %>
+      <div class="card">
+        <div class="card-img-top" style="background-image:url('https://res.cloudinary.com/ddat564z1/image/upload/v1661264334/AIR%20BFF/pexels-ben-mack-6775232_wupjak.jpg')">
+            <h5 class="card-title"><%= specialty.title %></h5>
+        </div>
+        <div class="card-body">
+          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+        </div>
+        <div class="card-body">
+          <p>25€ / heure</p>
+          <p>reviews</p>
+        </div>
+      </div>
+    <% end %>
   </div>
 </div>

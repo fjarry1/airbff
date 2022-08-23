@@ -1,0 +1,31 @@
+.card-img-top{
+  overflow: hidden;
+  vertical-align: middle;
+  border-radius: 5px;
+  height: 220px;
+  background-size: cover;
+  object-fit: contain;
+  display: flex;
+  align-items: flex-end;
+  padding-left: 16px;
+}
+
+.card {
+  padding: 16px;
+  border-radius: 15px;
+}
+
+.cards {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-gap: 16px;
+}
+
+.card-body {
+  display: flex;
+  justify-content: space-between;
+}
+
+.title-container {
+  margin-top: 50px;
+}
