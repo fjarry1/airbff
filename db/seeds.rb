@@ -7,6 +7,7 @@
 #   Character.create(name: "Luke", movie: movies.first)
 
 require 'faker'
+require "open-uri"
 
 puts "cleaning database"
 
@@ -16,7 +17,7 @@ User.destroy_all
 
 puts "creating test@test.test and azerty login"
 
-User.create!(email: "test@test.test",
+user = User.create!(email: "test@test.test",
              password: "azerty",
              first_name: "Jean-Eude",
              last_name: "BG",
@@ -24,13 +25,16 @@ User.create!(email: "test@test.test",
              description: "Verrat de viande à chien de crisse de maudit de saint-cimonaque de sacréfice de crucifix d'astie de cochonnerie de saint-sacrament de purée de sacristi d'estique d'étole",
              gender: "M",
              city: "Paris")
+file = URI.open("https://www.instagram.com/p/ChH7kaqoQAl/")
+user.photo.attach(io: file, filename: "avatar.png", content_type: "image/png")
+user.save!
 
 puts "Fake it until you make it"
 
-counter = 0
-50.times do
+counter = 1
+20.times do
   user_resa = User.all.sample
-  puts "creating user n°#{counter + 1}"
+  puts "creating user n°#{counter}"
   user = User.create!(email: Faker::Internet.email,
                password: "abcdefg",
                first_name: Faker::Name.first_name,
@@ -39,6 +43,8 @@ counter = 0
                description: Faker::Lorem.sentence(word_count: (50..100).to_a.sample),
                gender: ["M","F","Other"].sample,
                city: Faker::Address.city)
+  file = URI.open("https://source.unsplash.com/random/?profile")
+  user.photo.attach(io: file, filename: "avatar#{counter}.png", content_type: "image/png")
   user.save!
   (0..2).to_a.sample.times do
     puts "adding specialty"
