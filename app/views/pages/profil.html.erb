@@ -1,4 +1,4 @@
-g<%age = Date.today.year - @user.birthdate.year%>
+<%age = Date.today.year - @user.birthdate.year%>
 <%age -= 1 if Date.today < @user.birthdate + age.years%>
 <div class="p-5 m-5">
   <h1>Bonjour, <%=@user.first_name.capitalize%> <%=@user.last_name.capitalize%> !</h1>
