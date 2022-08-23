@@ -4,4 +4,6 @@ Rails.application.routes.draw do
 
   resources :specialties
   # resources :reservation
+
+  get "profil", to: "pages#profil"
 end
