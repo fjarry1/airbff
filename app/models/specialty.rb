@@ -3,4 +3,5 @@ class Specialty < ApplicationRecord
   has_one :reservation
   validates :title, :details, :price, presence: true
   validates :price, numericality: true
+  has_many :reservations
 end
