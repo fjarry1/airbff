@@ -3,8 +3,8 @@ class SpecialtiesController < ApplicationController
   def index
     @specialties = Specialty.all
     @markers = @specialties.geocoded.map do |specialty| {
-      lat: flat.latitude,
-      lng: flat.longitude,
+      lat: specialty.latitude,
+      lng: specialty.longitude,
       info_window: render_to_string(partial: "info_window", locals: { specialty: specialty })
     }
     end

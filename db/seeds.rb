@@ -24,6 +24,7 @@ user = User.create!(email: "test@test.test",
              description: "Verrat de viande à chien de crisse de maudit de saint-cimonaque de sacréfice de crucifix d'astie de cochonnerie de saint-sacrament de purée de sacristi d'estique d'étole",
              gender: "M",
              address: "32 rue lemercier, 75017, Paris")
+
 file = URI.open("https://source.unsplash.com/random/?profile")
 user.photos.attach(io: file, filename: "avatar0.png", content_type: "image/png")
 file = URI.open("https://source.unsplash.com/random/?profile")
@@ -40,7 +41,8 @@ user.save!
   specialty_JEBG = Specialty.create!(title: Faker::Hobby.activity,
                                 details: Faker::Lorem.sentence(word_count: (20..50).to_a.sample),
                                 price: (0..100).to_a.sample.to_i,
-                                user: user )
+                                user: user,
+                                localisation: user.address)
   specialty_JEBG.save!
 end
 
@@ -69,7 +71,8 @@ counter = 1
     specialty = Specialty.create!(title: Faker::Hobby.activity,
                                   details: Faker::Lorem.sentence(word_count: (20..50).to_a.sample),
                                   price: (0..100).to_a.sample.to_i,
-                                  user: user )
+                                  user: user,
+                                  localisation: user.address)
     specialty.save!
     (0..1).to_a.sample.times do
       puts "creating reservations"
@@ -78,8 +81,6 @@ counter = 1
                                       specialty: specialty,
                                       user: user_resa,
                                       is_accepted: [nil, true, false].sample)
-      specialty.reservation = reservation
-      specialty.save!
       reservation.save!
     end
   end
@@ -92,8 +93,5 @@ reservation = Reservation.create!(date: DateTime.now + (1..30).to_a.sample.days,
                                       user: User.last,
                                       is_accepted: [nil, true, false].sample)
 reservation.save!
-spe = User.find(1).specialties.first
-spe.reservation = reservation
-spe.save!
 
 puts "Database ready"
