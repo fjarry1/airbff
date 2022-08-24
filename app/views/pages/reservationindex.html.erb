@@ -10,6 +10,7 @@
           <div class="col-8">
             <p><%=resa.date%></p>
             <p><%=resa.comment%></p>
+            <%=link_to "suprimer la réservation", reservation_delete_path(resa), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}, class:"btn border-danger", style:"width: 260px;"%>
           </div>
           <div class="col-3 ms-5">
             <h3><%=specialty.user.first_name%> <%=specialty.user.last_name%></h3>

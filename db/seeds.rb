@@ -16,7 +16,7 @@ User.destroy_all
 
 puts "creating test@test.test and azerty login"
 
-user = User.create!(email: "test@test.test",
+user_jebg = User.create!(email: "test@test.test",
              password: "azerty",
              first_name: "Jean-Eude",
              last_name: "BG",
@@ -26,30 +26,30 @@ user = User.create!(email: "test@test.test",
              address: "32 rue lemercier, 75017, Paris")
 
 file = URI.open("https://source.unsplash.com/random/?profile")
-user.photos.attach(io: file, filename: "avatar0.png", content_type: "image/png")
+user_jebg.photos.attach(io: file, filename: "avatar0.png", content_type: "image/png")
 file = URI.open("https://source.unsplash.com/random/?profile")
-user.photos.attach(io: file, filename: "avatar2-0.png", content_type: "image/png")
+user_jebg.photos.attach(io: file, filename: "avatar2-0.png", content_type: "image/png")
 file = URI.open("https://source.unsplash.com/random/?profile")
-user.photos.attach(io: file, filename: "avatar2-0.png", content_type: "image/png")
+user_jebg.photos.attach(io: file, filename: "avatar2-0.png", content_type: "image/png")
 file = URI.open("https://source.unsplash.com/random/?profile")
-user.photos.attach(io: file, filename: "avatar2-0.png", content_type: "image/png")
+user_jebg.photos.attach(io: file, filename: "avatar2-0.png", content_type: "image/png")
 file = URI.open("https://source.unsplash.com/random/?profile")
-user.photos.attach(io: file, filename: "avatar2-0.png", content_type: "image/png")
-user.save!
+user_jebg.photos.attach(io: file, filename: "avatar2-0.png", content_type: "image/png")
+user_jebg.save!
 3.times do
   puts "adding specialty"
   specialty_JEBG = Specialty.create!(title: Faker::Hobby.activity,
                                 details: Faker::Lorem.sentence(word_count: (20..50).to_a.sample),
                                 price: (0..100).to_a.sample.to_i,
-                                user: user,
-                                localisation: user.address)
+                                user: user_jebg,
+                                localisation: user_jebg.address)
   specialty_JEBG.save!
 end
 
 puts "Fake it until you make it"
 
 counter = 1
-20.times do
+5.times do
   user_resa = User.all.sample
   puts "creating user n°#{counter}"
   user = User.create!(email: Faker::Internet.email,
@@ -89,7 +89,7 @@ end
 
 reservation = Reservation.create!(date: DateTime.now + (1..30).to_a.sample.days,
                                       comment: Faker::Lorem.sentence(word_count: (10..20).to_a.sample),
-                                      specialty: User.find(1).specialties.first,
+                                      specialty: user_jebg.specialties.first,
                                       user: User.last,
                                       is_accepted: [nil, true, false].sample)
 reservation.save!
