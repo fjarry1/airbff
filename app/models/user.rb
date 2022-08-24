@@ -11,6 +11,9 @@ class User < ApplicationRecord
   validates :description, length: { minimum: 100 }
   validate :old_enough?
 
+  # geocoded_by :city
+  # after_validation :geocode, if: :will_save_change_to_address?
+
   def old_enough?
     errors.add(:birthdate, "You should be over 18 years old.") unless (DateTime.now - birthdate).to_i >= 6570
   end
