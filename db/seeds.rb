@@ -49,7 +49,7 @@ end
 puts "Fake it until you make it"
 
 counter = 1
-5.times do
+20.times do
   user_resa = User.all.sample
   puts "creating user n°#{counter}"
   user = User.create!(email: Faker::Internet.email,
