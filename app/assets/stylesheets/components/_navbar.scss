@@ -10,4 +10,20 @@
 
 .navbar-lewagon .navbar-brand img {
   width: 40px;
+  margin-left: 20px;
+}
+
+.nav-link {
+  color: white;
+  margin-right: 20px;
+}
+
+.navbar-brand:hover {
+  opacity: 0.2;
+  text-decoration: none;
+}
+
+.nav-link:hover {
+  opacity: 0.2;
+  text-decoration: none;
 }
