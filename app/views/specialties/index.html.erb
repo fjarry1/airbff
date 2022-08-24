@@ -1,7 +1,16 @@
-<h1>index</h1>
+<h1>Mes Réservations</h1>
 
+<div class="d-inline-flex flew-wrap justify-content-evenly" style="width: 100%;">
 <% @specialties.each do |specialty| %>
-<p><%= specialty.title %></p>
+  <%unless specialty.reservation.nil?%>
+    <%if current_user == specialty.reservation.user%>
+      <div class="border rounded p-3 m-1" style="width: 30%;">
+        <h2><%= specialty.title %></h2>
+        <p><%=specialty.reservation.date%>
+        <p><%=specialty.reservation.comment%></p>
+      </div>
+    <%end%>
+  <% end %>
 <% end %>
 
 <div style="width: 100%; height: 600px;"

@@ -12,9 +12,13 @@ class ReservationsController < ApplicationController
   end
 
   def create
+    @specialty = Specialty.find(params[:specialty_id])
     @reservation = Reservation.new(reservation_params)
+    @reservation.specialty_id = @specialty.id
+    @reservation.user_id = current_user.id
+
     if @reservation.save
-      redirect_to reservation_index_path
+      redirect_to specialty_path(@specialty)
     else
       render :new
     end

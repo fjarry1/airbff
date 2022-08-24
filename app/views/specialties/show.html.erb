@@ -12,7 +12,33 @@
       <p class="pricetag"><%= @specialty.price %>$/hour</p>
     </div>
     <div class="booking-placeholder">
-      <p>Make a new friend</p>
-    </div>
+      <p>Book a friend</p>
+
+      <%= simple_form_for [@specialty, @reservation] do |f| %>
+      <%= f.input :date %>
+      <%= f.input :comment %>
+      <%= f.submit %>
+      <% end %>
+    <div>
   </div>
+  <div class="reservations w-50">
+    mettre des conditions avec des if
+
+    if pas de reservations => mettre un message "pas de resa"
+
+    # si reservations qui appartiennent au current user
+
+    # iterer dessus et les afficher
+
+    FAIRE UNE JOLIE DIV
+
+    <div>
+      <% @specialty.reservations.each do |reservation|%>
+        <p><%= reservation.comment %></p>
+      <% end %>
+    </div>
 </div>
+
+<%= link_to root_path do %>
+<i class="fa-solid fa-angles-left"> Back to Specialties </i>
+<% end %>
