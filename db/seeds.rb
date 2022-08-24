@@ -10,7 +10,6 @@ require 'faker'
 require "open-uri"
 
 puts "cleaning database"
-
 Reservation.destroy_all
 Specialty.destroy_all
 User.destroy_all
@@ -24,10 +23,26 @@ user = User.create!(email: "test@test.test",
              birthdate: DateTime.now - 25.years,
              description: "Verrat de viande à chien de crisse de maudit de saint-cimonaque de sacréfice de crucifix d'astie de cochonnerie de saint-sacrament de purée de sacristi d'estique d'étole",
              gender: "M",
-             city: "Paris")
+             address: "32 rue lemercier, 75017, Paris")
 file = URI.open("https://source.unsplash.com/random/?profile")
-user.photo.attach(io: file, filename: "avatar0.png", content_type: "image/png")
+user.photos.attach(io: file, filename: "avatar0.png", content_type: "image/png")
+file = URI.open("https://source.unsplash.com/random/?profile")
+user.photos.attach(io: file, filename: "avatar2-0.png", content_type: "image/png")
+file = URI.open("https://source.unsplash.com/random/?profile")
+user.photos.attach(io: file, filename: "avatar2-0.png", content_type: "image/png")
+file = URI.open("https://source.unsplash.com/random/?profile")
+user.photos.attach(io: file, filename: "avatar2-0.png", content_type: "image/png")
+file = URI.open("https://source.unsplash.com/random/?profile")
+user.photos.attach(io: file, filename: "avatar2-0.png", content_type: "image/png")
 user.save!
+3.times do
+  puts "adding specialty"
+  specialty_JEBG = Specialty.create!(title: Faker::Hobby.activity,
+                                details: Faker::Lorem.sentence(word_count: (20..50).to_a.sample),
+                                price: (0..100).to_a.sample.to_i,
+                                user: user )
+  specialty_JEBG.save!
+end
 
 puts "Fake it until you make it"
 
@@ -42,9 +57,12 @@ counter = 1
                birthdate: DateTime.now - (19..90).to_a.sample.years,
                description: Faker::Lorem.sentence(word_count: (50..100).to_a.sample),
                gender: ["M","F","Other"].sample,
-               city: Faker::Address.city)
-  file = URI.open("https://source.unsplash.com/random/?profile")
-  user.photo.attach(io: file, filename: "avatar#{counter}.png", content_type: "image/png")
+               address: "Paris #{counter}")
+  (1..7).to_a.sample.times do
+    puts "photo"
+    file = URI.open("https://source.unsplash.com/random/?profile")
+    user.photos.attach(io: file, filename: "avatar#{counter}.png", content_type: "image/png")
+  end
   user.save!
   (0..5).to_a.sample.times do
     puts "adding specialty"
@@ -60,10 +78,22 @@ counter = 1
                                       specialty: specialty,
                                       user: user_resa,
                                       is_accepted: [nil, true, false].sample)
+      specialty.reservation = reservation
+      specialty.save!
       reservation.save!
     end
   end
   counter += 1
 end
+
+reservation = Reservation.create!(date: DateTime.now + (1..30).to_a.sample.days,
+                                      comment: Faker::Lorem.sentence(word_count: (10..20).to_a.sample),
+                                      specialty: User.find(1).specialties.first,
+                                      user: User.last,
+                                      is_accepted: [nil, true, false].sample)
+reservation.save!
+spe = User.find(1).specialties.first
+spe.reservation = reservation
+spe.save!
 
 puts "Database ready"

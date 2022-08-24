@@ -12,6 +12,7 @@ class SpecialtiesController < ApplicationController
 
   def show
     @specialty = Specialty.find(params[:id])
+    @reservation = Reservation.new
   end
 
   def new

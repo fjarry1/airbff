@@ -1,5 +1,6 @@
 class Specialty < ApplicationRecord
   belongs_to :user
+  has_many :reservations
   validates :title, :details, :price, presence: true
   validates :price, numericality: true
 
