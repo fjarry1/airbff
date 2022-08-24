@@ -12,7 +12,39 @@
       <p class="pricetag"><%= @specialty.price %>$/hour</p>
     </div>
     <div class="booking-placeholder">
-      <p>Make a new friend</p>
+      <p>Book a friend</p>
+
+      <%= simple_form_for [@specialty, @reservation] do |f| %>
+      <%= f.input :date %>
+      <%= f.input :comment %>
+      <%= f.submit %>
+      <% end %>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+       <label for="hours">For how long ?</label>
+        <select class= "time-dropdown" name="hours" id="hours">
+          <option value="1h">1 hour</option>
+          <option value="2h">2 hours</option>
+          <option value="3h">3 hours</option>
+          <option value="4h">4 hours</option>
+        </select>
+      <p class="btn border-danger">Book a friend</p>
     </div>
   </div>
 </div>
