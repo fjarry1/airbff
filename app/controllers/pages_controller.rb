@@ -2,7 +2,7 @@ class PagesController < ApplicationController
   skip_before_action :authenticate_user!, only: :home
 
   def home
-    @specialties = Specialty.first(8)
+    @specialties = Specialty.all.reverse.first(8)
   end
 
   def profil

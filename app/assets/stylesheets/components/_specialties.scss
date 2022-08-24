@@ -3,7 +3,6 @@
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
   grid-gap: 16px;
   width: 100%;
-
   a {
     text-decoration: none;
   }
@@ -14,6 +13,14 @@
   padding: 50px;
   justify-content: space-between;
   align-items: flex-end;
+}
+
+.container {
+  margin-top: 50px;
+  margin-bottom: 50px;
+  a {
+    text-decoration: none;
+  }
 }
 
 @media (min-width: 100px) and (max-width: 575px) {
