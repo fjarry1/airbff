@@ -21,8 +21,9 @@ class SpecialtiesController < ApplicationController
 
   def create
     @specialty = Specialty.new(specialty_params)
-    if specialty.save
-      redirect_to user_index_path
+    @specialty.user_id = current_user.id
+    if @specialty.save
+      redirect_to root_path
     else
       render :new
     end
