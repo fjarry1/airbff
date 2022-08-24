@@ -5,7 +5,7 @@ class SpecialtiesController < ApplicationController
     @markers = @specialties.geocoded.map do |specialty| {
       lat: specialty.latitude,
       lng: specialty.longitude,
-      info_window: render_to_string(partial: "info_window", locals: { specialty: specialty })
+      # info_window: render_to_string(partial: "info_window", locals: { specialty: specialty })
     }
     end
   end
