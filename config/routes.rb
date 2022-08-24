@@ -6,4 +6,5 @@ Rails.application.routes.draw do
     resources :reservations
   end
   get "profil/:id", to: "pages#profil", as: "profil"
+  get "profil/:id/reservations", to: "pages#reservationindex", as: "reservation_index"
 end

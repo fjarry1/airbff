@@ -8,4 +8,8 @@ class PagesController < ApplicationController
   def profil
     @user = User.find(params[:id])
   end
+
+  def reservationindex
+    @specialties = Specialty.all
+  end
 end
