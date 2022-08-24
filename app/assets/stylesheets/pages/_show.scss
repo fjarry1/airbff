@@ -39,7 +39,7 @@ body {
   border-radius: 12px;
   background-color: white;
   box-shadow: rgba(0, 0, 0, 0.12) 0px 6px 16px;
-  border: solid 1px;
+  border: solid 2px;
   border-color: lightgray;
   font-weight: bold;
 // A changer lorsque booking form
@@ -52,16 +52,10 @@ body {
   font-weight: bold;
 }
 
-.btn {
-  border-radius: 12px;
-  color: #ff385c;
-  padding: 8px;
-}
-
-.time-dropdown {
-  border-radius: 12px;
-  color: #ff385c;
+.reservations {
   background-color: white;
-  border: solid 1px;
-  padding: 8px;
+  padding: 16px;
+  margin: 8px;
+  border-radius: 12px;
+  box-shadow: rgba(0, 0, 0, 0.12) 0px 6px 16px;
 }

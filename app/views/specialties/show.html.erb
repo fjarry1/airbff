@@ -19,26 +19,33 @@
       <%= f.input :comment %>
       <%= f.submit %>
       <% end %>
-    <div>
-  </div>
-  <div class="reservations w-50">
-    mettre des conditions avec des if
-
-    if pas de reservations => mettre un message "pas de resa"
-
-    # si reservations qui appartiennent au current user
-
-    # iterer dessus et les afficher
-
-    FAIRE UNE JOLIE DIV
-
-    <div>
-      <% @specialty.reservations.each do |reservation|%>
-        <p><%= reservation.comment %></p>
-      <% end %>
     </div>
+  </div>
+
+
+
+
+<div class="reservations">
+  <%# Condition pour afficher les resas %>
+  <% if current_user.reservations.first.nil? %>
+    <p>You have no reservation yet 😔</p>
+  <% else %>
+    <% current_user.reservations.each do |reservation| %>
+    <div class="d-inline-flex justify-content-between w-50">
+      <ul><%= reservation.date %></ul>
+      <ul><%= reservation.comment %></ul>
+    </div>
+    <% end %>
+  <% end %>
 </div>
 
+
+
+
+
+
+
 <%= link_to root_path do %>
-<i class="fa-solid fa-angles-left"> Back to Specialties </i>
+  <i class="fa-solid fa-angles-left"> Back to Specialties </i>
 <% end %>
+</div>
