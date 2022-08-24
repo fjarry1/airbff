@@ -8,6 +8,10 @@
   display: flex;
   align-items: flex-end;
   padding-left: 16px;
+
+  a {
+    text-decoration: none;
+  }
 }
 
 .card {
@@ -34,6 +38,22 @@
   color: white;
   text-shadow: 1px 1px 3px rgba(0,0,0,0.7);
   font-weight: bold;
+  text-decoration: none;
+}
+
+h5:hover {
+  color: lightcoral;
+  text-decoration: none;
+}
+
+.card-text{
+  text-overflow:ellipsis;
+  overflow:hidden;
+  // Addition lines for 2 line or multiline ellipsis
+  display: -webkit-box !important;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  white-space: normal;
 }
 
 @media (min-width: 100px) and (max-width: 575px) {
