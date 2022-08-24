@@ -16,6 +16,11 @@
   align-items: flex-end;
 }
 
+.container {
+  margin-top: 50px;
+  margin-bottom: 50px;
+}
+
 @media (min-width: 100px) and (max-width: 575px) {
   .specialties {
     grid-template-columns: 1fr 1fr;

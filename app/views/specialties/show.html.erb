@@ -1,51 +1,53 @@
-<div class="banner-show" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://source.unsplash.com/random);">
-  <div class="container">
-    <h1><%= @specialty.title %></h1>
-  </div>
-</div>
-
-
 <div class="container">
-  <div class="infos-show">
-    <div class="details-show">
-      <p><%= @specialty.details %></p>
-      <p class="pricetag"><%= @specialty.price %>$/hour</p>
+  <div class="banner-show" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://source.unsplash.com/random);">
+    <div class="container">
+      <h1><%= @specialty.title %></h1>
     </div>
-    <div class="booking-placeholder">
-      <p>Book a friend</p>
+  </div>
 
-      <%= simple_form_for [@specialty, @reservation] do |f| %>
-      <%= f.input :date %>
-      <%= f.input :comment %>
-      <%= f.submit %>
-      <% end %>
+
+  <div class="container">
+    <div class="infos-show">
+      <div class="details-show">
+        <p><%= @specialty.details %></p>
+        <p class="pricetag"><%= @specialty.price %>$/hour</p>
+      </div>
+      <div class="booking-placeholder">
+        <p>Book a friend</p>
+
+        <%= simple_form_for [@specialty, @reservation] do |f| %>
+        <%= f.input :date %>
+        <%= f.input :comment %>
+        <%= f.submit %>
+        <% end %>
+      </div>
     </div>
+
+
+
+
+  <div class="reservations">
+    <%# Condition pour afficher les resas %>
+    <% if current_user.reservations.first.nil? %>
+      <p>You have no reservation yet 😔</p>
+    <% else %>
+      <% current_user.reservations.each do |reservation| %>
+      <div class="d-inline-flex justify-content-between w-50">
+        <ul><%= reservation.date %></ul>
+        <ul><%= reservation.comment %></ul>
+      </div>
+      <% end %>
+    <% end %>
   </div>
 
 
 
 
-<div class="reservations">
-  <%# Condition pour afficher les resas %>
-  <% if current_user.reservations.first.nil? %>
-    <p>You have no reservation yet 😔</p>
-  <% else %>
-    <% current_user.reservations.each do |reservation| %>
-    <div class="d-inline-flex justify-content-between w-50">
-      <ul><%= reservation.date %></ul>
-      <ul><%= reservation.comment %></ul>
-    </div>
-    <% end %>
+
+
+
+  <%= link_to root_path do %>
+    <i type="button" class="btn btn-outline-danger">Back to Specialties</i>
   <% end %>
-</div>
-
-
-
-
-
-
-
-<%= link_to root_path do %>
-  <i class="fa-solid fa-angles-left"> Back to Specialties </i>
-<% end %>
+  </div>
 </div>

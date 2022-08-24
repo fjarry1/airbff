@@ -1,0 +1,11 @@
+<div class="container">
+  <h1>Créer un nouveau service</h1>
+
+  <%= simple_form_for @specialty do |f| %>
+  <%= f.input :title %>
+  <%= f.input :details %>
+  <%= f.input :price %>
+  <%= f.input :localisation %>
+  <%= f.submit %>
+  <% end %>
+</div>
