@@ -16,6 +16,9 @@
 .card {
   padding: 16px;
   border-radius: 15px;
+  &.active {
+    border: solid 2px #FF5A60;
+  }
 }
 
 .cards {
