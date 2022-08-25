@@ -32,9 +32,12 @@
       <p>You have no reservation yet 😔</p>
     <% else %>
       <% current_user.reservations.each do |reservation| %>
-      <div class="d-inline-flex justify-content-between w-50">
-        <ul><%= reservation.date %></ul>
-        <ul><%= reservation.comment %></ul>
+      <div class="d-flex flex-column justify-content-between w-100">
+        <div class="row">
+          <p class="col-2"><%= reservation.date %></p>
+          <p class="col-1"> - </p>
+          <p class="col-9"><%= reservation.comment %></p>
+        </div>
       </div>
       <% end %>
     <% end %>

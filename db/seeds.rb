@@ -62,7 +62,7 @@ user = User.create!(email: "#{first_name}.#{last_name}@gmail.com",
               first_name: first_name,
               last_name: last_name,
               birthdate: age,
-              description: "Salut 👋, moi c'est #{first_name} #{last_name}, j'ai #{DateTime.now.year - age.year} ans et j'habite dans le marais à paris. J'adore faire la fête.",
+              description: "Salut 👋, moi c'est #{first_name} #{last_name}, j'ai #{DateTime.now.year - age.year} ans et j'habite dans le marais à paris. Tequilla, Heineken, pas l'temps d'niaiser",
               gender: ["M","F","Other"].sample,
               address: "Saint-Paul, Paris")
 (2..7).to_a.sample.times do
@@ -109,7 +109,7 @@ user = User.create!(email: "#{first_name}.#{last_name}@gmail.com",
               first_name: first_name,
               last_name: last_name,
               birthdate: age,
-              description: "Salut 👋, moi c'est #{first_name} #{last_name}, j'ai #{DateTime.now.year - age.year} ans et j'habite dans le quartier latin. J'adore faire le clown.",
+              description: "Salut 👋, moi c'est #{first_name} #{last_name}, j'ai #{DateTime.now.year - age.year} ans et j'habite dans le quartier latin. J'adore prendre des photos de moi à la golden hour.",
               gender: ["M","F","Other"].sample,
               address: "14 rue Lagrange, 75005 Paris")
 (2..7).to_a.sample.times do
@@ -194,5 +194,39 @@ Reservation.create!(date: DateTime.now + (1..30).to_a.sample.days,
                     specialty: specialty_JEBG_1,
                     user: user,
                     status: "En attente")
+
+counter = 4
+address = ["16 villa Gaudelet, 75011 Paris",
+           "174 quaie de Jemmapes, 75010 Paris",
+           "12 rue Lagille, 75018 Paris",
+           "3 rue rude, 75116 Paris",
+           "17 rue Duban, 75016 Paris",
+           "38 Rue Duranton, 75015 Paris",
+           "18 rue du lunain, 75014 Paris",
+           "61 Rue Baudricourt, 75013 Paris",
+           "81 Rue de Billancourt, 92100 Boulogne-Billancourt",
+           "152 avenue de Paris, 94300 Vincennes",
+           "27 Rue Arago, 94400 Vitry-sur-Seine",
+           "2-4 Rue de Viseu, 78160 Marly-le-Roi"]
+12.times do
+  puts "creating user n°#{counter}"
+  first_name = Faker::Name.first_name
+  last_name = Faker::Name.last_name
+  age = DateTime.now - (19..90).to_a.sample.years
+  user = User.create!(email: "#{first_name}.#{last_name}@gmail.com",
+                      password: "azerty",
+                      first_name: first_name,
+                      last_name: last_name,
+                      birthdate: age,
+                      description: "Salut 👋, moi c'est #{first_name} #{last_name}, j'ai #{DateTime.now.year - age.year} ans et j'habite dans Paris. Je suis très sociable. J'aime les chiens et les chats. J'ai un lapin, il adore les carottes.",
+                      gender: ["M", "F", "Other"].sample,
+                      address: address[counter - 4])
+  (2..4).to_a.sample.times do
+    puts "photo"
+    file = URI.open("https://source.unsplash.com/random/?profile")
+    user.photos.attach(io: file, filename: "avatar.png", content_type: "image/png")
+  end
+  counter += 1
+end
 
 puts "Database ready"
