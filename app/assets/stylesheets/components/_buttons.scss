@@ -1,0 +1,19 @@
+.button {
+  background-color: #FF5A60;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  a {
+    text-decoration: none;
+    color: white;
+  }
+}
+
+.button:hover {
+  background-color: #ffa7aa;
+  a {
+    text-decoration: none;
+    color: white;
+  }
+}

@@ -1,12 +1,20 @@
 class SpecialtiesController < ApplicationController
-
   def index
-    @specialties = Specialty.all
-    @markers = @specialties.geocoded.map do |specialty| {
-      lat: specialty.latitude,
-      lng: specialty.longitude,
-      # info_window: render_to_string(partial: "info_window", locals: { specialty: specialty })
-    }
+    if params[:query].present?
+      sql_query = <<~SQL
+        specialties.title @@ :query
+        OR user.first_name @@ :query
+        OR user.last_name @@ :query
+      SQL
+      @specialties = Specialty.joins(:title).where(sql_query, query: "%#{params[:query]}%")
+    else
+      @specialties = Specialty.all
+      @markers = @specialties.geocoded.map do |specialty| {
+        lat: specialty.latitude,
+        lng: specialty.longitude,
+        # info_window: render_to_string(partial: "info_window", locals: { specialty: specialty })
+      }
+      end
     end
   end
 
