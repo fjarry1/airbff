@@ -1,0 +1,38 @@
+#map {
+  width: 50%;
+  height: calc(100vh - 78px);
+  position: sticky;
+  top: 0;
+  object-fit: cover;
+  margin-top: 48px;
+  border-radius: 15px;
+}
+
+.cards-container {
+  display: flex;
+}
+
+
+.map-cards {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-gap: 16px;
+}
+
+@media (min-width: 100px) and (max-width: 575px) {
+  .cards {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (min-width: 576px) {
+  .cards {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (min-width: 768px) {
+  .cards {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+}
