@@ -1,29 +1,34 @@
-<div class="specialties-container">
-    <div class="specialties">
-        <% @specialties.each do |specialty| %>
-            <%= link_to specialty_path(specialty) do%>
-            <h5 class="card-title d-flex flex-column align-items-center">
-            <i class="fa-solid fa-circle"></i>
-            <%= specialty.title %></h5>
-            <% end %>
+<div class="specialties">
+    <% @specialties.each do |specialty| %>
+        <%= link_to specialty_path(specialty) do%>
+        <h5 class="card-title d-flex flex-column align-items-center">
+        <i class="fa-solid fa-circle"></i>
+        <%= specialty.title %></h5>
         <% end %>
+    <% end %>
   </div>
 </div>
-
-
 
 <div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://res.cloudinary.com/ddat564z1/image/upload/v1661258915/AIR%20BFF/pexels-rodnae-productions-5543382_lipibr.jpg);">
   <div class="container">
-    <h1>T'as vu ma <strong>grosse</strong> bannière ?</h1>
-    <p>Des moments uniques à partager avec tes futurs BFF !</p>
-    <a class="btn btn-warning" href="#" style="display:center">Ici ira notre future searchbar</a>
+    <h1>Tu es en recherche de nouveaux amis ?</h1>
+    <p>Prépares-toi à partager des moments uniques avec tes futurs BFF !</p>
+      <div class="search-bar">
+      <%= form_with url: specialties_path, method: :get, class: "d-flex" do %>
+        <%= text_field_tag :query,
+          params[:query],
+          class: "form-control",
+          placeholder: "Cherchez un service ou un BFF !"%>
+        <%= submit_tag "Recherche", class: "button" %>
+        <% end %>
+    </div>
   </div>
 </div>
 
 
 
 
-<div class="container my-5">
+<div class="card-container my-5">
   <div class="title-container">
     <p><strong>Découvre les expériences les plus originales avec tes futurs BFF !</strong></p>
   </div>
@@ -45,4 +50,3 @@
       </div>
     <% end %>
   </div>
-</div>
