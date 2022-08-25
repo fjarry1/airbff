@@ -37,7 +37,7 @@ file = URI.open("https://source.unsplash.com/bodgc6H44FA")
 user_jebg.photos.attach(io: file, filename: "avatar5-0.png", content_type: "image/png")
 user_jebg.save!
 puts "adding specialty"
-specialty_JEBG_1 = Specialty.create!(title: 'Crossfit',
+specialty_JEBG_1 = Specialty.new(title: 'Crossfit',
                                 details: "Le sport c'est la vie. La vie c'est le ricard. Boire du ricard, c'est un sport",
                                 price: 25,
                                 category: "SPORT",
