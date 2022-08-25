@@ -22,30 +22,7 @@
         <% end %>
       </div>
     </div>
-
-
-
-
-  <div class="reservations">
-    <%# Condition pour afficher les resas %>
-    <% if current_user.reservations.first.nil? %>
-      <p>You have no reservation yet 😔</p>
-    <% else %>
-      <% current_user.reservations.each do |reservation| %>
-      <div class="d-inline-flex justify-content-between w-50">
-        <ul><%= reservation.date %></ul>
-        <ul><%= reservation.comment %></ul>
-      </div>
-      <% end %>
-    <% end %>
-  </div>
-
-
-
-
-
-
-
+    
   <%= link_to root_path do %>
     <div class="button">
       <i>Retourner aux spécialités</i>
