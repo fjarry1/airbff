@@ -3,6 +3,7 @@ class PagesController < ApplicationController
 
   def home
     @specialties = Specialty.all.reverse.first(8)
+    @users = User.all
   end
 
   def profil

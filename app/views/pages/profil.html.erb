@@ -1,4 +1,3 @@
-
   <%age = Date.today.year - @user.birthdate.year%>
   <%age -= 1 if Date.today < @user.birthdate + age.years%>
   <div class="p-5 m-5">
@@ -6,8 +5,10 @@
     <div class="row">
       <div class="col-7 me-2">
         <h3><%=age%> ans, <%=@user.address%></h3>
-        <p>Rating to add, XX reviews</p>
-        <%= link_to "Modifier mon profil", edit_user_registration_path, class:"button", style:"text-decoration: none; width: 30%;"%> <%#= penser a bverifier%>
+        <p>Commentaire à ajouter</p>
+        <% if current_user.id == @user.id %>
+          <%= link_to "Modifier mon profil", edit_user_registration_path, class:"button", style:"text-decoration: none; width: 30%;"%> <%#= penser a bverifier%>
+        <% end %>
         <%=cl_image_tag @user.photos.first.key, height: 300, width: 300, crop: :fill, gravity: :face, class:'rounded-circle my-3'%>
         <h3 class="my-1">Ma description<h3>
         <p class="fs-6"><%=@user.description%></p>
@@ -16,6 +17,7 @@
           <div class="d-flex">
           <%@user.specialties.each do |service|%>
             <p class="me-5"><%=service.title%></p>
+            <%# mettre des link to specialty_path(service) %>
           <% end %>
           </div>
         <% end %>

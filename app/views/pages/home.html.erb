@@ -9,6 +9,12 @@
   </div>
 </div>
 
+<div class="category-button">
+  <div class=monBouton>
+  <input type=submit value=>
+</div>
+</div>
+
 <div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://res.cloudinary.com/ddat564z1/image/upload/v1661258915/AIR%20BFF/pexels-rodnae-productions-5543382_lipibr.jpg);">
   <div class="container">
     <h1>Tu es en recherche de nouveaux amis ?</h1>
@@ -25,28 +31,29 @@
   </div>
 </div>
 
-
-
-
 <div class="card-container my-5">
   <div class="title-container">
     <p><strong>Découvre les expériences les plus originales avec tes futurs BFF !</strong></p>
   </div>
   <div class="cards">
-    <% @specialties.each do |specialty| %>
+    <% @users.each do |user| %>
       <div class="card">
-        <div class="card-img-top" style="background-image:url('https://res.cloudinary.com/ddat564z1/image/upload/v1661264334/AIR%20BFF/pexels-ben-mack-6775232_wupjak.jpg')">
-            <%= link_to specialty_path(specialty) do%>
-            <h5 class="card-title"><%= specialty.title %></h5>
+        <div class="card-img-top" style="background-image:url(<%= cl_image_path user.photos.first.key, crop: :fill, gravity: :face %>)">
+            <%= link_to profil_path(user) do%>
+            <h5 class="card-title"><%= user.first_name %></h5>
             <% end %>
         </div>
         <div class="card-body">
-          <p class="card-text"><%= specialty.details %></p>
+          <p class="card-text"><%= user.description %></p>
         </div>
         <div class="card-body">
-          <p><%= specialty.price %> / heure</p>
-          <p>reviews</p>
+        <% if user.specialties.first.nil? %>
+        <p>Activité favorite: ouvert à TOUT</p>
+        <% else %>
+          <p>Activité favorite: <%= user.specialties.first.title %></p>
+          <% end %>
         </div>
       </div>
     <% end %>
   </div>
+</div>
