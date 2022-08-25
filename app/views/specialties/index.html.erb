@@ -1,7 +1,33 @@
-  <h1>Mes Réservations</h1>
 
-  <div style="width: 100%; height: 600px;"
+<h1>offres par catégorie</h1>
+<div data-controller="marker">
+  <div class="cards-container mx-3">
+    <div class="col-6 my-5 me-3">
+      <div class="map-cards">
+        <% @specialties.each do |specialty| %>
+        <div class="card" data-specialty-id="<%= specialty.id %>" data-action="mouseover->marker#updateMarker mouseout->marker#redToBlack" >
+          <div class="card-img-top" style="background-image:url('https://res.cloudinary.com/ddat564z1/image/upload/v1661264334/AIR%20BFF/pexels-ben-mack-6775232_wupjak.jpg')">
+            <%= link_to specialty_path(specialty) do%>
+            <h5 class="card-title"><%= specialty.title %></h5>
+            <% end %>
+          </div>
+          <div class="card-body">
+            <p class="card-text"><%= specialty.details %></p>
+          </div>
+          <div class="card-body">
+            <p><%= specialty.price %> / heure</p>
+            <p>reviews</p>
+          </div>
+        </div>
+        <% end %>
+      </div>
+    </div>
+
+  <div id="map"
     data-controller="map"
     data-map-markers-value="<%= @markers.to_json %>"
     data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
   </div>
+  </div>
+</div>
+
