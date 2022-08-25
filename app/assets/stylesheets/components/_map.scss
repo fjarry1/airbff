@@ -12,6 +12,25 @@
   display: flex;
 }
 
+.mapboxgl-popup {
+  max-width: 200px;
+}
+
+.mapboxgl-popup-content {
+  text-align: center;
+  font-family: "Open Sans", sans-serif;
+}
+
+.marker {
+  color: #ffa7aa;
+  font-size: 40px;
+
+
+}
+
+.active {
+  color:  #FF5A60;
+}
 
 .map-cards {
   display: grid;
