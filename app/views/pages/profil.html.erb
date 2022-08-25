@@ -7,7 +7,7 @@
       <div class="col-7 me-2">
         <h3><%=age%> ans, <%=@user.address%></h3>
         <p>Rating to add, XX reviews</p>
-        <%= link_to "Edit my profile", edit_user_registration_path, class:"btn border", style:"text-decoration: none; width: 30%;"%> <%#= penser a bverifier%>
+        <%= link_to "Modifier mon profil", edit_user_registration_path, class:"button", style:"text-decoration: none; width: 30%;"%> <%#= penser a bverifier%>
         <%=cl_image_tag @user.photos.first.key, height: 300, width: 300, crop: :fill, gravity: :face, class:'rounded-circle my-3'%>
         <h3 class="my-1">Ma description<h3>
         <p class="fs-6"><%=@user.description%></p>
@@ -35,4 +35,3 @@
       </div>
     </div>
   </div>
-

@@ -1,24 +1,26 @@
+<div class="container">
 
-<h1>Mes Réservations</h1>
+  <h1>Mes Réservations</h1>
 
-<div class="d-inline-flex flex-wrap  flex-grow-1 m-5">
-<% @specialties.each do |specialty| %>
-  <%unless specialty.reservations.first.nil?%>
-    <% specialty.reservations.each do |resa| %>
-      <%if current_user == resa.user%>
-        <div class="border border-rounded p-3 m-3 row flex-grow-1">
-          <h2><%= specialty.title %></h2>
-          <div class="col-8">
-            <p><%=resa.date%></p>
-            <p><%=resa.comment%></p>
-            <%=link_to "suprimer la réservation", reservation_delete_path(resa), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}, class:"btn border-danger", style:"width: 260px;"%>
-          </div>
-          <div class="col-3 ms-5">
-            <h3><%=specialty.user.first_name%> <%=specialty.user.last_name%></h3>
-            <%=cl_image_tag specialty.user.photos.first.key, height: 120, width: 120, crop: :fill, gravity: :face, class:'m-1 border rounded-circle'%>
-          </div>
+  <div class="d-inline-flex flex-wrap  flex-grow-1 m-5">
+  <% @specialties.each do |specialty| %>
+    <%unless specialty.reservations.first.nil?%>
+      <% specialty.reservations.each do |resa| %>
+        <%if current_user == resa.user%>
+          <div class="border border-rounded p-3 m-3 row flex-grow-1">
+            <h2><%= specialty.title %></h2>
+            <div class="col-8">
+              <p><%=resa.date%></p>
+              <p><%=resa.comment%></p>
+              <%=link_to "suprimer la réservation", reservation_delete_path(resa), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}, class:"button", style:"width: 260px;"%>
+            </div>
+            <div class="col-3 ms-5">
+              <h3><%=specialty.user.first_name%> <%=specialty.user.last_name%></h3>
+              <%=cl_image_tag specialty.user.photos.first.key, height: 120, width: 120, crop: :fill, gravity: :face, class:'m-1 border rounded-circle'%>
+            </div>
+          <%end%>
         <%end%>
-      <%end%>
+      <% end %>
     <% end %>
-  <% end %>
+    </div>
   </div>

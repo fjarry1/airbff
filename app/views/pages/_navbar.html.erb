@@ -1,30 +1,71 @@
-<div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
-  <div class="container-fluid">
-    <%= link_to root_path, class: "navbar-brand" do %>
-      <%= image_tag "https://res.cloudinary.com/ddat564z1/image/upload/v1661337254/AIR%20BFF/airbff-logo_mlmb8x.png" %>
-    <% end %>
+<% if params[:controller] == "pages" %>
+  <div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
+    <div class="container-fluid">
+      <%= link_to root_path, class: "navbar-brand" do %>
+        <%= image_tag "https://res.cloudinary.com/ddat564z1/image/upload/v1661337254/AIR%20BFF/airbff-logo_mlmb8x.png" %>
+      <% end %>
 
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
 
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav me-auto">
-        <% if user_signed_in? %>
-          <li class="nav-item">
-            <%= link_to "Proposez vos services", new_specialty_path, class: "nav-link mt-2" %>
-          </li>
-            <%= cl_image_tag current_user.photos.first.key, class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
-            <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-              <%= link_to "Profil", profil_path(current_user), class: "dropdown-item" %>
-              <%= link_to "Réservations", reservation_index_path(current_user), class: "dropdown-item" %>
-              <%= link_to "Log out", destroy_user_session_path, class: "dropdown-item", data: {turbo_method: :delete} %>
-            </div>
-          </li>
-        <% else %>
-          <%= link_to "Sign-in / Sign-up", new_user_session_path, class: "nav-link" %>
-          <% end %>
-      </ul>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto">
+          <% if user_signed_in? %>
+            <li class="nav-item">
+              <%= link_to "Proposez vos services de BFF", new_specialty_path, class: "nav-link mt-2" %>
+            </li>
+              <%= cl_image_tag current_user.photos.first.key, class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+              <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                <%= link_to "Profil", profil_path(current_user), class: "dropdown-item" %>
+                <%= link_to "Réservations", reservation_index_path(current_user), class: "dropdown-item" %>
+                <%= link_to "Deconnexion", destroy_user_session_path, class: "dropdown-item", data: {turbo_method: :delete} %>
+              </div>
+            </li>
+          <% else %>
+            <%= link_to "Connexion", new_user_session_path, class: "nav-link" %>
+            <% end %>
+        </ul>
+      </div>
     </div>
   </div>
-</div>
+<% else %>
+  <div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
+    <div class="container-fluid">
+      <%= link_to root_path, class: "navbar-brand" do %>
+        <%= image_tag "https://res.cloudinary.com/ddat564z1/image/upload/v1661337254/AIR%20BFF/airbff-logo_mlmb8x.png" %>
+      <% end %>
+      <div class="search-bar">
+      <%= form_with url: specialties_path, method: :get, class: "d-flex" do %>
+        <%= text_field_tag :query,
+          params[:query],
+          class: "form-control",
+          placeholder: "Cherchez un service ou un BFF !"%>
+        <%= submit_tag "Recherche", class: "button" %>
+        <% end %>
+      </div>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto">
+          <% if user_signed_in? %>
+            <li class="nav-item">
+              <%= link_to "Proposez vos services de BFF", new_specialty_path, class: "nav-link mt-2" %>
+            </li>
+              <%= cl_image_tag current_user.photos.first.key, class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+              <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                <%= link_to "Profil", profil_path(current_user), class: "dropdown-item" %>
+                <%= link_to "Réservations", reservation_index_path(current_user), class: "dropdown-item" %>
+                <%= link_to "Déconnexion", destroy_user_session_path, class: "dropdown-item", data: {turbo_method: :delete} %>
+              </div>
+            </li>
+          <% else %>
+            <%= link_to "Connexion", new_user_session_path, class: "nav-link" %>
+            <% end %>
+        </ul>
+      </div>
+    </div>
+  </div>
+<% end %>
