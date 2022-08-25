@@ -9,7 +9,7 @@
           <div class="col-8">
             <p><%=resa.date%></p>
             <p><%=resa.comment%></p>
-            <%=link_to "Annuler la réservation", reservation_delete_path(resa), data: {turbo_method: :delete, turbo_confirm: "Vous êtes sûr ?"}, class:"btn border-danger mt-3", style:"width: 255px;"%>
+            <%=link_to "Annuler la réservation", reservation_delete_path(resa), data: {turbo_method: :delete, turbo_confirm: "Vous êtes sûr ?"}, class:"button mt-3", style:"width: 255px;"%>
           </div>
           <div class="col-3 ms-5">
             <h3><%=specialty.user.first_name%> <%=specialty.user.last_name%></h3>
@@ -31,8 +31,8 @@
           <p><%= reservation.comment %></p>
           <p><%= reservation.status.nil? ? "" : reservation.status %></p>
           <div class="d-flex">
-            <%=link_to "Accepter", accept_path(reservation), data: {turbo_method: :patch}, class:"btn border-danger", style:"width: 120px;"%>
-            <%=link_to "Refuser", decline_path(reservation), data: {turbo_method: :patch}, class:"btn border-danger ms-3", style:"width: 120px;"%>
+            <%=link_to "Accepter", accept_path(reservation), data: {turbo_method: :patch}, class:"button", style:"width: 120px;"%>
+            <%=link_to "Refuser", decline_path(reservation), data: {turbo_method: :patch}, class:"button ms-3", style:"width: 120px;"%>
           </div>
         </div>
     <% end %>
