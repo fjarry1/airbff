@@ -42,7 +42,7 @@ specialty_JEBG_1 = Specialty.new(title: 'Crossfit',
                                 price: 25,
                                 category: "SPORT",
                                 user: user_jebg,
-                                localisation: user_jebg.address)
+                                localisation: "70 rue nollet, 75017 Paris")
 specialty_JEBG_1.save!
 specialty_JEBG_2 = Specialty.create!(title: "Quelqu'un a dit Bière 🍺 ?",
                                 details: 'Viens brasser ta bière avec moi biloute',
@@ -51,6 +51,18 @@ specialty_JEBG_2 = Specialty.create!(title: "Quelqu'un a dit Bière 🍺 ?",
                                 user: user_jebg,
                                 localisation: user_jebg.address)
 specialty_JEBG_2.save!
+
+user = User.create!(email: "test@test.test",
+             password: "azerty",
+             first_name: "test",
+             last_name: "test",
+             birthdate: age,
+             description: "Salut Biloute, moi c'est Jean-Eude BG, le BG de Paris 17. J'ai 25 ans. L'aprem c'est ricard devant Sardou. Dans la vie j'aime pas les débats: y'a pas à tortiller du cul pour chier droit.",
+             gender: "M",
+             address: "32 rue lemercier, 75017, Paris")
+file = URI.open("https://source.unsplash.com/bodgc6H44FA")
+user.photos.attach(io: file, filename: "avatar5-0.png", content_type: "image/png")
+user.save!
 
 puts "Fake it until you make it"
 puts "creating user n°1"
@@ -77,7 +89,7 @@ specialty = Specialty.create!(title: "Marriage",
                               price: 20,
                               category: "ACCOMPAGNANT",
                               user: user,
-                              localisation: user.address)
+                              localisation: "15 Rue Neuve Saint-Pierre, 75004 Paris")
 specialty.save!
 specialty = Specialty.create!(title: "Visite de Grand-Parents",
                               details: "J'adore les vieilles personnes, les histoires qu'ils ont vécues et ont à raconter. Je peux me faire passer pour votre amie ou petite-amie en option.",
@@ -131,7 +143,7 @@ specialty = Specialty.create!(title: "Fitness coach",
                               price: 15,
                               category: "SPORT",
                               user: user,
-                              localisation: user.address)
+                              localisation: "17 rue racine, 75005 Paris")
 specialty.save!
 puts "creating reservations"
 reservation = Reservation.create!(date: DateTime.now + (1..30).to_a.sample.days,
@@ -172,7 +184,7 @@ specialty = Specialty.create!(title: "Pique-nique",
                               price: 23,
                               category: "DIVERTISSEMENT",
                               user: user,
-                              localisation: user.address)
+                              localisation: "111 rue Saint-Dominique, 75007 Paris")
 specialty.save!
 specialty = Specialty.create!(title: "Poterie",
                               details: "Ensemble d'assiettes en céramiques",
