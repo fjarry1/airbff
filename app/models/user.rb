@@ -12,6 +12,6 @@ class User < ApplicationRecord
   validate :old_enough?
 
   def old_enough?
-    errors.add(:birthdate, "You should be over 18 years old.") unless (DateTime.now - birthdate).to_i >= 6570
+    errors.add(:birthdate, "Vous devez avoir au moins 18 ans.") unless (DateTime.now - birthdate).to_i >= 6570
   end
 end

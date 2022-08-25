@@ -10,7 +10,9 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_08_25_082705) do
+
+
+ActiveRecord::Schema[7.0].define(version: 2022_08_25_102117) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -42,6 +44,15 @@ ActiveRecord::Schema[7.0].define(version: 2022_08_25_082705) do
     t.index ["blob_id", "variation_digest"], name: "index_active_storage_variant_records_uniqueness", unique: true
   end
 
+  create_table "pg_search_documents", force: :cascade do |t|
+    t.text "content"
+    t.string "searchable_type"
+    t.bigint "searchable_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["searchable_type", "searchable_id"], name: "index_pg_search_documents_on_searchable"
+  end
+
   create_table "reservations", force: :cascade do |t|
     t.date "date"
     t.text "comment"
@@ -50,6 +61,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_08_25_082705) do
     t.boolean "is_accepted"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "status", default: "En attente"
     t.index ["specialty_id"], name: "index_reservations_on_specialty_id"
     t.index ["user_id"], name: "index_reservations_on_user_id"
   end

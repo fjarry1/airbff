@@ -13,7 +13,6 @@ export default class extends Controller {
     console.log(marker)
     marker.classList.add('active')
     event.currentTarget.classList.add('active')
-    console.log(marker)
   }
 
   redToBlack(event) {
