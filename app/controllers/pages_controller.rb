@@ -12,4 +12,10 @@ class PagesController < ApplicationController
   def reservationindex
     @specialties = Specialty.all
   end
+
+  def reservationdestroy
+    @reservation = Reservation.find(params[:id])
+    @reservation.destroy
+    redirect_to reservation_index_path
+  end
 end

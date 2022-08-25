@@ -7,4 +7,5 @@ Rails.application.routes.draw do
   end
   get "profil/:id", to: "pages#profil", as: "profil"
   get "profil/:id/reservations", to: "pages#reservationindex", as: "reservation_index"
+  delete "reservations/:id", to: "pages#reservationdestroy", as: "reservation_delete"
 end
