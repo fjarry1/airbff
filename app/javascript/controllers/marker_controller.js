@@ -12,15 +12,13 @@ export default class extends Controller {
     const marker = document.getElementById(`specialty-marker-${specialtyId}`)
     console.log(marker)
     marker.classList.add('active')
-    console.log(marker)
+    event.currentTarget.classList.add('active')
   }
 
   redToBlack(event) {
-    console.log("aaaaaaaaa")
     const specialtyId = event.currentTarget.dataset.specialtyId
     const marker = document.getElementById(`specialty-marker-${specialtyId}`)
-    console.log(marker)
     marker.classList.remove('active')
-    console.log(marker)
+    event.currentTarget.classList.remove('active')
   }
 }
