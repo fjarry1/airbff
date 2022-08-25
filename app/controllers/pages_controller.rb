@@ -11,6 +11,7 @@ class PagesController < ApplicationController
 
   def reservationindex
     @specialties = Specialty.all
+    @reservations = Reservation.all
   end
 
   def reservationdestroy

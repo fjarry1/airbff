@@ -8,4 +8,6 @@ Rails.application.routes.draw do
   get "profil/:id", to: "pages#profil", as: "profil"
   get "profil/:id/reservations", to: "pages#reservationindex", as: "reservation_index"
   delete "reservations/:id", to: "pages#reservationdestroy", as: "reservation_delete"
+  patch "reservations/:id/accept", to: "reservations#accept", as: "accept"
+  patch "reservations/:id/decline", to: "reservations#decline", as: "decline"
 end

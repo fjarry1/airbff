@@ -10,15 +10,32 @@
           <div class="col-8">
             <p><%=resa.date%></p>
             <p><%=resa.comment%></p>
-            <%=link_to "suprimer la réservation", reservation_delete_path(resa), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}, class:"btn border-danger", style:"width: 260px;"%>
+            <%=link_to "Annuler la réservation", reservation_delete_path(resa), data: {turbo_method: :delete, turbo_confirm: "Vous êtes sûr ?"}, class:"btn border-danger mt-3", style:"width: 255px;"%>
           </div>
           <div class="col-3 ms-5">
             <h3><%=specialty.user.first_name%> <%=specialty.user.last_name%></h3>
             <%=cl_image_tag specialty.user.photos.first.key, height: 120, width: 120, crop: :fill, gravity: :face, class:'m-1 border rounded-circle'%>
           </div>
         </div>
-      <%end%>
-    <%end%>
+      <% end %>
+    <% end %>
   <% end %>
 <% end %>
+</div>
+
+<div class="d-inline-flex flex-wrap  flex-grow-1 m-5">
+  <% @reservations.each do |reservation| %>
+    <% if reservation.specialty.user_id == current_user.id %>
+        <div class="border border-rounded p-3 m-3 row flex-grow-1">
+          <h2><%=reservation.specialty.title%></h2>
+          <p><%= reservation.date %></p>
+          <p><%= reservation.comment %></p>
+          <p><%= reservation.status.nil? ? "" : reservation.status %></p>
+          <div class="d-flex">
+            <%=link_to "Accepter", accept_path(reservation), data: {turbo_method: :patch}, class:"btn border-danger", style:"width: 120px;"%>
+            <%=link_to "Refuser", decline_path(reservation), data: {turbo_method: :patch}, class:"btn border-danger ms-3", style:"width: 120px;"%>
+          </div>
+        </div>
+    <% end %>
+  <% end %>
 </div>

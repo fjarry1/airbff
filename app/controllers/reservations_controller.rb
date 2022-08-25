@@ -18,7 +18,7 @@ class ReservationsController < ApplicationController
     @reservation.user_id = current_user.id
 
     if @reservation.save
-      redirect_to specialty_path(@specialty)
+      redirect_to reservation_index_path(current_user)
     else
       render :new
     end
@@ -38,9 +38,23 @@ class ReservationsController < ApplicationController
     redirect_to reservation_index_path
   end
 
+  def accept
+    @reservation = Reservation.find(params[:id])
+    @reservation.status = "Accepté"
+    @reservation.save
+    redirect_to reservation_index_path
+  end
+
+  def decline
+    @reservation = Reservation.find(params[:id])
+    @reservation.status = "Refusé"
+    @reservation.save
+    redirect_to reservation_index_path
+  end
+
   private
 
   def reservation_params
-    params.require(:reservation).permit(:date, :comment, :specialty_id, :user_id)
+    params.require(:reservation).permit(:date, :comment, :specialty_id, :user_id, :status)
   end
 end
