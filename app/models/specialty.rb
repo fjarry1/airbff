@@ -7,5 +7,5 @@ class Specialty < ApplicationRecord
   geocoded_by :localisation
   after_validation :geocode, if: :will_save_change_to_localisation?
   include PgSearch::Model
-  multisearchable against: [:title, :specialty]
+  multisearchable against: [:title, :details]
 end
