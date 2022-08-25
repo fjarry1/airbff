@@ -1,12 +1,11 @@
-<div class="specialties-container">
-    <div class="specialties">
-        <% @specialties.each do |specialty| %>
-            <%= link_to specialty_path(specialty) do%>
-            <h5 class="card-title d-flex flex-column align-items-center">
-            <i class="fa-solid fa-circle"></i>
-            <%= specialty.title %></h5>
-            <% end %>
+<div class="specialties">
+    <% @specialties.each do |specialty| %>
+        <%= link_to specialty_path(specialty) do%>
+        <h5 class="card-title d-flex flex-column align-items-center">
+        <i class="fa-solid fa-circle"></i>
+        <%= specialty.title %></h5>
         <% end %>
+    <% end %>
   </div>
 </div>
 
@@ -23,7 +22,7 @@
 
 
 
-<div class="container my-5">
+<div class="card-container my-5">
   <div class="title-container">
     <p><strong>Découvre les expériences les plus originales avec tes futurs BFF !</strong></p>
   </div>
@@ -45,4 +44,3 @@
       </div>
     <% end %>
   </div>
-</div>

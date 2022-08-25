@@ -1,3 +1,4 @@
+
 <h1>Mes Réservations</h1>
 
 <div class="d-inline-flex flex-wrap  flex-grow-1 m-5">
@@ -16,9 +17,8 @@
             <h3><%=specialty.user.first_name%> <%=specialty.user.last_name%></h3>
             <%=cl_image_tag specialty.user.photos.first.key, height: 120, width: 120, crop: :fill, gravity: :face, class:'m-1 border rounded-circle'%>
           </div>
-        </div>
+        <%end%>
       <%end%>
-    <%end%>
+    <% end %>
   <% end %>
-<% end %>
-</div>
+  </div>
