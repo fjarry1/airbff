@@ -8,3 +8,23 @@
     text-decoration: none;
   }
 }
+
+.button {
+  background-color: #FF5A60;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  a {
+    text-decoration: none;
+    color: white;
+  }
+}
+
+.button:hover {
+  text-shadow: 1px 1px 1px rgb(255, 255, 255);
+  a {
+    text-decoration: none;
+    color: white;
+  }
+}

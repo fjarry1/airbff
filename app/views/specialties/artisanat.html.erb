@@ -5,7 +5,26 @@
       <div class="cards">
         <% @specialties.each do |specialty| %>
             <div class="card" data-specialty-id="<%= specialty.id %>">
-              <div class="card-img-top" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://source.unsplash.com/random?art)">
+              <% if specialty.title == "Poterie" %>
+              <% photo = "https://images.unsplash.com/photo-1609881583302-61548332039c?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTV8fHBvdGVyeXxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60"  %>
+              <% elsif  specialty.title == "Pique-nique" %>
+              <% photo = "https://images.unsplash.com/photo-1596241913274-fd9f65e3a2b5?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8M3x8cGljbmljfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60" %>
+              <% elsif  specialty.title == "Fitness coach" %>
+              <% photo = "https://images.unsplash.com/photo-1518459031867-a89b944bffe4?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTl8fGZpdG5lc3MlMjBjb2FjaHxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60" %>
+              <% elsif  specialty.title == "Clown" %>
+              <% photo = "https://images.unsplash.com/photo-1602850463441-2afff5c72860?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTB8fGNsb3dufGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60" %>
+              <% elsif  specialty.title == "Visite de Grand-Parents" %>
+              <% photo = "https://images.unsplash.com/photo-1422015347944-9dd46d16bd0b?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTZ8fG9sZCUyMHBlb3BsZXxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60" %>
+              <% elsif  specialty.title == "Mariage" %>
+              <% photo = "https://images.unsplash.com/photo-1511285560929-80b456fea0bc?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Nnx8d2VkZGluZ3xlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60" %>
+              <% elsif  specialty.title == "Crossfit" %>
+              <% photo = "https://images.unsplash.com/photo-1603503363848-6952525df449?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8Zml0bmVzc3xlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60" %>
+              <% elsif  specialty.title == "Quelqu'un a dit Bière 🍺 ?" %>
+              <% photo = "https://images.unsplash.com/photo-1436076863939-06870fe779c2?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NXx8YmVlcnxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60" %>
+              <% else %>
+              <% photo = "https://images.unsplash.com/photo-1603190287605-e6ade32fa852?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8ZW50ZXJ0YWlubWVudHxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60" %>
+              <% end %>
+              <div class="card-img-top" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(<%= photo %>)">
                 <%= link_to specialty_path(specialty) do%>
                 <h5 class="card-title"><%= specialty.title %></h5>
                 <% end %>
