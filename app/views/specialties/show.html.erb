@@ -10,18 +10,56 @@
     <div class="infos-show">
       <div class="details-show">
         <p><%= @specialty.details %></p>
-        <p class="pricetag"><%= @specialty.price %>$/hour</p>
+        <p class="pricetag"><%= @specialty.price %>€/heure</p>
       </div>
       <div class="booking-placeholder">
-        <p>Book a friend</p>
+        <p>Réserver un ami</p>
 
         <%= simple_form_for [@specialty, @reservation] do |f| %>
-        <%= f.input :date %>
-        <%= f.input :comment %>
+        <%= f.input :date, label: "Date" %>
+        <%= f.input :comment, label: "Un commentaire ?" %>
         <%= f.submit %>
         <% end %>
       </div>
     </div>
+
+    <%# iteration pour savoir si un user a la specialité en question %>
+    <div class="card-container my-5">
+      <div class="title-container">
+        <p><strong>Ce service vous est proposé par</strong></p>
+      </div>
+      <div class="cards">
+        <% @users.each do |user| %>
+          <% if !user.specialties.first.nil? %>
+            <% user.specialties.each do |specialty| %>
+              <% if specialty.title == @specialty.title %>
+                <div class="card">
+                  <div class="card-img-top" style="background-image:url(<%= cl_image_path user.photos.first.key, crop: :fill, gravity: :face %>)">
+                    <%= link_to profil_path(user) do %>
+                    <h5><%= user.first_name %></h5>
+                  </div>
+                    <div class="card-body">
+                      <p class="card-text"><%= user.description %></p>
+                    </div>
+                    <div class="card-body">
+                      <% if user.specialties.first.nil? %>
+                        <p>Activité favorite: ouvert à TOUT</p>
+                      <% else %>
+                        <p>Activité favorite: <%= user.specialties.first.title %></p>
+                      <% end %>
+                    </div>
+                <% end %>
+              <% end %>
+            <% end %>
+          <% end %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+
+
+
+
 
   <%= link_to root_path do %>
     <div class="button">
