@@ -1,5 +1,25 @@
+<div class="container">
 <h1>Sport</h1>
 
-<% @specialties.each do |specialty|%>
-<p><%= specialty.title %></p>
-<% end %>
+  <div class="cards-container my-5">
+      <div class="cards">
+        <% @specialties.each do |specialty| %>
+            <div class="card" data-specialty-id="<%= specialty.id %>">
+              <div class="card-img-top" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://source.unsplash.com/random?sport)">
+                <%= link_to specialty_path(specialty) do%>
+                <h5 class="card-title"><%= specialty.title %></h5>
+                <% end %>
+              </div>
+              <div class="card-body">
+                <p class="card-text"><%= specialty.details %></p>
+              </div>
+              <div class="card-body">
+                <p><%= specialty.price %> / jour</p>
+                <p></p>
+              </div>
+            </div>
+          <% end %>
+      </div>
+  </div>
+
+</div>
