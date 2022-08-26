@@ -1,27 +1,34 @@
-<div class="specialties">
-    <% @specialties.each do |specialty| %>
-        <%= link_to specialty_path(specialty) do%>
-        <h5 class="card-title d-flex flex-column align-items-center">
-        <i class="fa-solid fa-circle"></i>
-        <%= specialty.title %></h5>
-        <% end %>
+<div class="category-button-container">
+  <div class=category-button style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(255,255,255,0.4)), url(https://res.cloudinary.com/ddat564z1/image/upload/v1661434624/AIR%20BFF/SPORT-04_nsh70j.png);">
+    <%= link_to sport_path do%>
+    <h5 class="category-title">SPORT</h5>
+    <% end %>
+  </div>
+
+    <div class=category-button style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(255,255,255,0.4)), url(https://res.cloudinary.com/ddat564z1/image/upload/v1661434623/AIR%20BFF/DIVERTISSEMENT-01_llk04z.png);">
+    <%= link_to divertissement_path do%>
+    <h5 class="category-title">DIVERTISSEMENT</h5>
+    <% end %>
+  </div>
+
+    <div class=category-button style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(255,255,255,0.4)), url(https://res.cloudinary.com/ddat564z1/image/upload/v1661434623/AIR%20BFF/ARTISANAT-02_s51ft4.png);">
+    <%= link_to artisanat_path do%>
+    <h5 class="category-title">ARTISANAT</h5>
+    <% end %>
+  </div>
+
+    <div class=category-button style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(255,255,255,0.4)), url(https://res.cloudinary.com/ddat564z1/image/upload/v1661258915/AIR%20BFF/pexels-rodnae-productions-5543382_lipibr.jpg);">
+    <%= link_to accompagnant_path do%>
+    <h5 class="category-title">ACCOMPAGNANT</h5>
     <% end %>
   </div>
 </div>
 
-<%#<div class="category-button-container">
-  <div class=category-button style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://res.cloudinary.com/ddat564z1/image/upload/v1661434624/AIR%20BFF/ACCOMPAGNANT_ocepd8.png);">
-    <%= link_to category_path(category) do%>
-<%#     <h5 class="category-title"><%= category.specialties %></h5>
-<%#     <% end %>
-<%#   </div>
-</div> %>
 
-
-<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://res.cloudinary.com/ddat564z1/image/upload/v1661258915/AIR%20BFF/pexels-rodnae-productions-5543382_lipibr.jpg);">
+<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://res.cloudinary.com/ddat564z1/image/upload/v1661434624/AIR%20BFF/ACCOMPAGNANT_ocepd8.png);">
   <div class="container">
     <h1>Tu es en recherche de nouveaux amis ?</h1>
-    <p>Prépares-toi à partager des moments uniques avec tes futurs BFF !</p>
+    <p>Prépare-toi à partager des moments uniques avec tes futurs BFF !</p>
       <div class="search-bar">
       <%= form_with url: specialties_path, method: :get, class: "d-flex" do %>
         <%= text_field_tag :query,
@@ -40,23 +47,25 @@
   </div>
   <div class="cards">
     <% @users.each do |user| %>
-      <div class="card">
-        <div class="card-img-top" style="background-image:url(<%= cl_image_path user.photos.first.key, crop: :fill, gravity: :face %>)">
-            <%= link_to profil_path(user) do%>
-            <h5 class="card-title"><%= user.first_name %></h5>
+      <% unless user == current_user%>
+        <div class="card">
+          <div class="card-img-top" style="background-image:url(<%= cl_image_path user.photos.first.key, crop: :fill, gravity: :face %>)">
+              <%= link_to profil_path(user) do%>
+              <h5 class="card-title"><%= user.first_name %></h5>
+              <% end %>
+          </div>
+          <div class="card-body">
+            <p class="card-text"><%= user.description %></p>
+          </div>
+          <div class="card-body">
+          <% if user.specialties.first.nil? %>
+          <p>Activité favorite: ouvert à TOUT</p>
+          <% else %>
+            <p>Activité favorite: <%= user.specialties.first.title %></p>
             <% end %>
+          </div>
         </div>
-        <div class="card-body">
-          <p class="card-text"><%= user.description %></p>
-        </div>
-        <div class="card-body">
-        <% if user.specialties.first.nil? %>
-        <p>Activité favorite: ouvert à TOUT</p>
-        <% else %>
-          <p>Activité favorite: <%= user.specialties.first.title %></p>
-          <% end %>
-        </div>
-      </div>
+      <% end %>
     <% end %>
   </div>
 </div>

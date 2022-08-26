@@ -1,0 +1,38 @@
+.category-button {
+  overflow: hidden;
+  border-radius: 5px;
+  height: 80px;
+  background-size: cover;
+  object-fit: contain;
+  display: flex;
+  color: white;
+  align-items: center;
+  vertical-align: middle;
+  justify-content: center;
+  a {
+    text-decoration: none;
+  }
+}
+
+.category-button-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-gap: 16px;
+  margin-bottom: 50px;
+  margin-left: 50px;
+  margin-right: 50px;
+  margin-top: 50px;
+}
+
+h5:hover {
+  color: #FF5A60;
+  text-decoration: none;
+}
+
+.category-title {
+  margin-top: 5px;
+  color: rgb(255, 255, 239);
+  text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.4);
+  font-weight: bold;
+  text-decoration: none;
+}

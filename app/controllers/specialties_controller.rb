@@ -3,10 +3,10 @@ class SpecialtiesController < ApplicationController
     if params[:query].present?
       sql_query = <<~SQL
         specialties.title @@ :query
-        OR user.first_name @@ :query
-        OR user.last_name @@ :query
+        OR users.first_name @@ :query
+        OR users.last_name @@ :query
       SQL
-      @specialties = Specialty.joins(:title).where(sql_query, query: "%#{params[:query]}%")
+      @specialties = Specialty.joins(:user).where(sql_query, query: "%#{params[:query]}%")
     else
       @specialties = Specialty.all
       @markers = @specialties.geocoded.map do |specialty| {
@@ -19,7 +19,24 @@ class SpecialtiesController < ApplicationController
     end
   end
 
+  def sport
+    @specialties = Specialty.where(category: "SPORT")
+  end
+
+  def divertissement
+    @specialties = Specialty.where(category: "DIVERTISSEMENT")
+  end
+
+  def artisanat
+    @specialties = Specialty.where(category: "ARTISANAT")
+  end
+
+  def accompagnant
+    @specialties = Specialty.where(category: "ACCOMPAGNANT")
+  end
+
   def show
+    @users = User.all
     @specialty = Specialty.find(params[:id])
     @reservation = Reservation.new
   end
