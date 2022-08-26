@@ -8,6 +8,7 @@
 
 require 'faker'
 require "open-uri"
+require "date"
 
 puts "cleaning database"
 Reservation.destroy_all
@@ -84,8 +85,8 @@ user = User.create!(email: "#{first_name}.#{last_name}@gmail.com",
 end
 user.save!
 puts "adding specialty"
-specialty = Specialty.create!(title: "Marriage",
-                              details: "Vous n'avez pas de date pour le marriage de votre cousine ? Je peux au choix enflammer la piste de dance, ou débattre de la géopolitique du thon rouge en mer méridionale.",
+specialty = Specialty.create!(title: "Mariage",
+                              details: "Vous n'avez pas de date pour le mariage de votre cousine ? Je peux au choix enflammer la piste de dance, ou débattre de la géopolitique du thon rouge en mer méridionale.",
                               price: 20,
                               category: "ACCOMPAGNANT",
                               user: user,
@@ -98,15 +99,18 @@ specialty = Specialty.create!(title: "Visite de Grand-Parents",
                               user: user,
                               localisation: user.address)
 specialty.save!
-puts "creating reservations"
-reservation = Reservation.create!(date: DateTime.now + (1..30).to_a.sample.days,
+puts "creating reservations !!!!!!"
+date = DateTime.now + (1..30).to_a.sample.days
+reservation = Reservation.create!(start_date: date,
+                                  end_date: date + (1..5).to_a.sample.days,
                                   comment: "Je vais rendre visite à ma grand-mère et elle adorerait me voir en couple.",
                                   specialty: specialty,
                                   user: user_jebg,
                                   status: ["En attente", "Accepté", "Refusé"].sample)
 reservation.save!
-
-Reservation.create!(date: DateTime.now + (1..30).to_a.sample.days,
+date = DateTime.now + (1..30).to_a.sample.days
+Reservation.create!(start_date: date,
+                    end_date: date + (1..5).to_a.sample.days,
                     comment: "Le houblon, c'est ma passion 🍻",
                     specialty: specialty_JEBG_2,
                     user: user,
@@ -146,14 +150,18 @@ specialty = Specialty.create!(title: "Fitness coach",
                               localisation: "17 rue racine, 75005 Paris")
 specialty.save!
 puts "creating reservations"
-reservation = Reservation.create!(date: DateTime.now + (1..30).to_a.sample.days,
+date = DateTime.now + (1..30).to_a.sample.days
+reservation = Reservation.create!(start_date: date,
+                    end_date: date + (1..5).to_a.sample.days,
                                   comment: "Besoin de motivation à la salle.",
                                   specialty: specialty,
                                   user: user_jebg,
                                   status: ["En attente", "Accepté", "Refusé"].sample)
 reservation.save!
 
-Reservation.create!(date: DateTime.now + (1..30).to_a.sample.days,
+date = DateTime.now + (1..30).to_a.sample.days
+Reservation.create!(start_date: date,
+                    end_date: date + (1..5).to_a.sample.days,
                     comment: "Le houblon, c'est ma passion 🍻",
                     specialty: specialty_JEBG_2,
                     user: user,
@@ -194,14 +202,18 @@ specialty = Specialty.create!(title: "Poterie",
                               localisation: user.address)
 specialty.save!
 puts "creating reservations"
-reservation = Reservation.create!(date: DateTime.now + (1..30).to_a.sample.days,
+date = DateTime.now + (1..30).to_a.sample.days
+reservation = Reservation.create!(start_date: date,
+                    end_date: date + (1..5).to_a.sample.days,
                                   comment: "Mes assiettes IKEA ne me plaisent plus, je cherche un nouveau loisir créatif",
                                   specialty: specialty,
                                   user: user_jebg,
                                   status: ["En attente", "Accepté", "Refusé"].sample)
 reservation.save!
 
-Reservation.create!(date: DateTime.now + (1..30).to_a.sample.days,
+date = DateTime.now + (1..30).to_a.sample.days
+Reservation.create!(start_date: date,
+                    end_date: date + (1..5).to_a.sample.days,
                     comment: "J'ai toujours voulu me mettre au crosstraining !!!",
                     specialty: specialty_JEBG_1,
                     user: user,
