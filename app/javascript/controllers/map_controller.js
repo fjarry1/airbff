@@ -39,6 +39,7 @@ export default class extends Controller {
       console.log(marker.specialty_id)
       const popup = new mapboxgl.Popup().setHTML(marker.info_window)
       const el = document.createElement('div');
+      const specialties = document.querySelectorAll(".card")
       el.className = 'marker';
       el.innerHTML = '<i class="fa-solid fa-location-dot"></i>';
       el.dataset.specialtyId = marker.specialty_id
@@ -47,7 +48,7 @@ export default class extends Controller {
         .setLngLat([ marker.lng, marker.lat ])
         .setPopup(popup)
         .addTo(this.map)
-    })
+      })
   }
 
   #fitMapToMarkers() {
