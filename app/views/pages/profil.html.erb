@@ -10,15 +10,14 @@
           <%= link_to "Modifier mon profil", edit_user_registration_path, class:"button", style:"text-decoration: none; width: 30%;"%> <%#= penser a bverifier%>
         <% end %>
         <%=cl_image_tag @user.photos.first.key, height: 300, width: 300, crop: :fill, gravity: :face, class:'rounded-circle my-3'%>
-        <h3 class="my-1">Ma description<h3>
+        <h3 class="my-3">Ma Description<h3>
         <p class="fs-6"><%=@user.description%></p>
         <% if @user.specialties.first%>
-          <h3 class="my-1">Mes activitées favorites</h3>
+          <h3 class="my-2">Mes Services</h3>
           <div class="d-flex">
-          <%@user.specialties.each do |service|%>
-            <p class="me-5"><%=service.title%></p>
-            <%# mettre des link to specialty_path(service) %>
-          <% end %>
+            <%@user.specialties.each do |service|%>
+              <%= link_to service.title, specialty_path(service), class:" m-3", style:"text-decoration: none;"%>
+            <% end %>
           </div>
         <% end %>
       </div>
