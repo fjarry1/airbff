@@ -7,7 +7,7 @@
         <div class="border border-rounded p-3 m-3 row flex-grow-1">
           <h2><%= specialty.title %></h2>
           <div class="col-8">
-            <p><%=resa.date%></p>
+            <p><%=resa.start_date.strftime("%m/%d/%Y")%> - <%=resa.end_date.strftime("%m/%d/%Y")%></p>
             <p><%=resa.comment%></p>
             <%=link_to "Annuler la réservation", reservation_delete_path(resa), data: {turbo_method: :delete, turbo_confirm: "Vous êtes sûr ?"}, class:"button mt-3", style:"width: 255px;"%>
           </div>
@@ -27,7 +27,7 @@
     <% if reservation.specialty.user_id == current_user.id %>
         <div class="border border-rounded p-3 m-3 row flex-grow-1">
           <h2><%=reservation.specialty.title%></h2>
-          <p><%= reservation.date %></p>
+          <p><%= reservation.start_date.strftime("%m/%d/%Y") %> - <%= reservation.end_date.strftime("%m/%d/%Y") %></p>
           <p><%= reservation.comment %></p>
           <p><%= reservation.status.nil? ? "" : reservation.status %></p>
           <div class="d-flex">
