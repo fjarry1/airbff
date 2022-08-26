@@ -2,10 +2,11 @@
   <h1>Créer un nouveau service</h1>
 
   <%= simple_form_for @specialty do |f| %>
-  <%= f.input :title %>
-  <%= f.input :details %>
-  <%= f.input :price %>
+  <%= f.input :title, label: "Titre" %>
+  <%= f.input :category, collection: ["SPORT","DIVERTISSEMENT","ARTISANAT","ACCOMPAGNANT"], label: "Catégorie"%>
+  <%= f.input :details, label: "Détails" %>
+  <%= f.input :price, label: "Prix/jours" %>
   <%= f.input :localisation %>
-  <%= f.submit %>
+  <%= f.button :submit, "Propose ton service 👌", class:"button" %>
   <% end %>
 </div>
