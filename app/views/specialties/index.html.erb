@@ -1,5 +1,5 @@
 <div class="container">
-<% @markers = @markers.reject { |marker| current_user.specialty_ids.include?(marker[:specialty_id]) }%>
+<%# @markers = @markers.reject { |marker| current_user.specialty_ids.include?(marker[:specialty_id]) }%>
 <h1>offres par catégorie</h1>
 <div data-controller="marker">
   <div class="cards-container mx-3">

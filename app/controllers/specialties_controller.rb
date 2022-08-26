@@ -9,6 +9,7 @@ class SpecialtiesController < ApplicationController
       @specialties = Specialty.joins(:user).where(sql_query, query: "%#{params[:query]}%")
     else
       @specialties = Specialty.all
+    end
       @markers = @specialties.geocoded.map do |specialty| {
         lat: specialty.latitude,
         lng: specialty.longitude,
@@ -16,7 +17,7 @@ class SpecialtiesController < ApplicationController
         specialty_id: specialty.id
       }
       end
-    end
+
   end
 
   def sport
