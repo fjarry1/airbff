@@ -1,3 +1,5 @@
 <h1>Artisanat</h1>
 
-<%= console %>
+<% @specialties.each do |specialty|%>
+<p><%= specialty.title %></p>
+<% end %>
