@@ -58,7 +58,7 @@ user = User.create!(email: "test@test.test",
              first_name: "Paul",
              last_name: "Portier",
              birthdate: DateTime.now - 30.years,
-             description: "Anciennement photographe, j'ai rejoins Le Wagon en 2019 dans le but de devenir web-developper fullstack. Je travail maintenant en Freelance, et entant que prof et Batch Manager au Wagon. Tequilla, Heineken, pas l'temps d'niaiser.",
+             description: "Anciennement photographe, j'ai rejoins Le Wagon en 2019 dans le but de devenir web-developper fullstack. Je travail maintenant en Freelance, et en tant que prof et Batch Manager au Wagon. Tequilla, Heineken, pas l'temps d'niaiser.",
              gender: "M",
              address: "Formentera")
 
