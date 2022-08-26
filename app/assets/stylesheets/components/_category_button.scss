@@ -1,14 +1,14 @@
 .category-button {
   overflow: hidden;
-  vertical-align: middle;
   border-radius: 5px;
-  height: 70px;
+  height: 80px;
   background-size: cover;
   object-fit: contain;
   display: flex;
-  align-items: flex-end;
-  padding-left: 16px;
   color: white;
+  align-items: center;
+  vertical-align: middle;
+  justify-content: center;
   a {
     text-decoration: none;
   }
@@ -29,8 +29,9 @@ h5:hover {
   text-decoration: none;
 }
 
-.h5 {
-  color: rgb(251, 239, 239);
+.category-title {
+  margin-top: 5px;
+  color: rgb(255, 255, 239);
   text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.4);
   font-weight: bold;
   text-decoration: none;
