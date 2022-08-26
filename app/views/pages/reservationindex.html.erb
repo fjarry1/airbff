@@ -13,6 +13,7 @@
                     <div class="me-3">
                       <p><%=resa.start_date.strftime("%m/%d/%Y")%> - <%=resa.end_date.strftime("%m/%d/%Y")%></p>
                       <p><%=resa.comment%></p>
+                      <p><%=resa.status%></p>
                       <%=link_to "Annuler la réservation", reservation_delete_path(resa), data: {turbo_method: :delete, turbo_confirm: "Vous êtes sûr ?"}, class:"button mt-3", style:"width: 255px;"%>
                     </div>
                   </div>
