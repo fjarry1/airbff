@@ -5,7 +5,6 @@
     <div class="row">
       <div class="col-7 me-2">
         <h3><%=age%> ans, <%=@user.address%></h3>
-        <p>Commentaire à ajouter</p>
         <% if current_user.id == @user.id %>
           <%= link_to "Modifier mon profil", edit_user_registration_path, class:"button", style:"text-decoration: none; width: 30%;"%> <%#= penser a bverifier%>
         <% end %>
