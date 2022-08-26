@@ -6,8 +6,31 @@
       <div class="map-cards">
         <% @specialties.each do |specialty| %>
           <% unless specialty.user == current_user %>
-            <div class="card" data-specialty-id="<%= specialty.id %>" data-action="mouseover->marker#updateMarker mouseout->marker#redToBlack" >
-              <div class="card-img-top" style="background-image:url('https://res.cloudinary.com/ddat564z1/image/upload/v1661264334/AIR%20BFF/pexels-ben-mack-6775232_wupjak.jpg')">
+            <div class="card" data-specialty-id="<%= specialty.id %>">
+
+
+              <% if specialty.title == "Poterie" %>
+              <% photo = "https://images.unsplash.com/photo-1609881583302-61548332039c?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTV8fHBvdGVyeXxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60"  %>
+              <% elsif  specialty.title == "Pique-nique" %>
+              <% photo = "https://images.unsplash.com/photo-1596241913274-fd9f65e3a2b5?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8M3x8cGljbmljfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60" %>
+              <% elsif  specialty.title == "Fitness coach" %>
+              <% photo = "https://images.unsplash.com/photo-1596241913274-fd9f65e3a2b5?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8M3x8cGljbmljfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60" %>
+              <% elsif  specialty.title == "clown" %>
+              <% photo = "https://images.unsplash.com/photo-1596241913274-fd9f65e3a2b5?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8M3x8cGljbmljfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60" %>
+              <% elsif  specialty.title == "Visite de Grand-Parents" %>
+              <% photo = "https://images.unsplash.com/photo-1596241913274-fd9f65e3a2b5?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8M3x8cGljbmljfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60" %>
+              <% elsif  specialty.title == "Mariage" %>
+              <% photo = "https://images.unsplash.com/photo-1596241913274-fd9f65e3a2b5?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8M3x8cGljbmljfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60" %>
+              <% elsif  specialty.title == "Crossfit" %>
+              <% photo = "https://images.unsplash.com/photo-1596241913274-fd9f65e3a2b5?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8M3x8cGljbmljfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60" %>
+              <% elsif  specialty.title == "Visite de Grand-Parents" %>
+              <% photo = "https://images.unsplash.com/photo-1596241913274-fd9f65e3a2b5?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8M3x8cGljbmljfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60" %>
+              <% else %>
+              <% photo = "https://images.unsplash.com/photo-1603190287605-e6ade32fa852?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8ZW50ZXJ0YWlubWVudHxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60" %>
+              <% end %>
+
+
+              <div class="card-img-top" style="background-image:url(<%= photo %>)">
                 <%= link_to specialty_path(specialty) do%>
                 <h5 class="card-title"><%= specialty.title %></h5>
                 <% end %>

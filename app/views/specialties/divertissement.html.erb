@@ -5,7 +5,7 @@
       <div class="cards">
         <% @specialties.each do |specialty| %>
             <div class="card" data-specialty-id="<%= specialty.id %>">
-              <div class="card-img-top" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://source.unsplash.com/random?sport)">
+              <div class="card-img-top" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://source.unsplash.com/random?entertainment)">
                 <%= link_to specialty_path(specialty) do%>
                 <h5 class="card-title"><%= specialty.title %></h5>
                 <% end %>
