@@ -15,11 +15,11 @@ Reservation.destroy_all
 Specialty.destroy_all
 User.destroy_all
 
-puts "creating Jean-Eude.BG@gmail.com and azerty login"
+puts "creating Jean-Eudes.BG@gmail.com and azerty login"
 age = DateTime.now - 25.years
-user_jebg = User.create!(email: "Jean-Eude.BG@gmail.com",
+user_jebg = User.create!(email: "Jean-Eudes.BG@gmail.com",
              password: "azerty",
-             first_name: "Jean-Eude",
+             first_name: "Jean-Eudes",
              last_name: "BG",
              birthdate: age,
              description: "Salut Biloute, moi c'est Jean-Eude BG, le BG de Paris 17. J'ai #{DateTime.now.year - age.year} ans. L'aprem c'est ricard devant Sardou. Dans la vie j'aime pas les débats: y'a pas à tortiller du cul pour chier droit.",
@@ -55,15 +55,32 @@ specialty_JEBG_2.save!
 
 user = User.create!(email: "test@test.test",
              password: "azerty",
-             first_name: "test",
-             last_name: "test",
-             birthdate: age,
-             description: "Salut Biloute, moi c'est Jean-Eude BG, le BG de Paris 17. J'ai 25 ans. L'aprem c'est ricard devant Sardou. Dans la vie j'aime pas les débats: y'a pas à tortiller du cul pour chier droit.",
+             first_name: "Paul",
+             last_name: "Portier",
+             birthdate: DateTime.now - 30.years,
+             description: "Anciennement photographe, j'ai rejoins Le Wagon en 2019 dans le but de devenir web-developper fullstack. Je travail maintenant en Freelance, et entant que prof et Batch Manager au Wagon. Tequilla, Heineken, pas l'temps d'niaiser.",
              gender: "M",
-             address: "32 rue lemercier, 75017, Paris")
-file = URI.open("https://source.unsplash.com/bodgc6H44FA")
+             address: "Formentera")
+
+file = URI.open("https://res.cloudinary.com/wagon/image/upload/c_fill,g_face,h_200,w_200/v1583704409/r5cbmwhshuvafp3v7jmm.jpg")
 user.photos.attach(io: file, filename: "avatar5-0.png", content_type: "image/png")
+file = URI.open("https://source.unsplash.com/JO5CT2EXXz0")
+user.photos.attach(io: file, filename: "avatar4-0.png", content_type: "image/png")
+file = URI.open("https://source.unsplash.com/Lwx-q6OdGAc")
+user.photos.attach(io: file, filename: "avatar3-0.png", content_type: "image/png")
+file = URI.open("https://source.unsplash.com/nCxCBnK6UKQ")
+user.photos.attach(io: file, filename: "avatar2-0.png", content_type: "image/png")
+file = URI.open("https://source.unsplash.com/hTv8aaPziOQ")
+user.photos.attach(io: file, filename: "avatar1-0.png", content_type: "image/png")
 user.save!
+
+specialty = Specialty.create!(title: "Poterie",
+                              details: "Ensemble d'assiettes en céramiques",
+                              price: 15,
+                              category: "ARTISANAT",
+                              user: user,
+                              localisation: user.address)
+specialty.save!
 
 puts "Fake it until you make it"
 puts "creating user n°1"
@@ -75,7 +92,7 @@ user = User.create!(email: "#{first_name}.#{last_name}@gmail.com",
               first_name: first_name,
               last_name: last_name,
               birthdate: age,
-              description: "Salut 👋, moi c'est #{first_name} #{last_name}, j'ai #{DateTime.now.year - age.year} ans et j'habite dans le marais à paris. Tequilla, Heineken, pas l'temps d'niaiser",
+              description: "Salut 👋, moi c'est #{first_name} #{last_name}, j'ai #{DateTime.now.year - age.year} ans et j'habite dans le marais à paris. J'aime la bière et le soleil.",
               gender: ["M","F","Other"].sample,
               address: "Saint-Paul, Paris")
 (2..7).to_a.sample.times do
@@ -194,22 +211,7 @@ specialty = Specialty.create!(title: "Pique-nique",
                               user: user,
                               localisation: "111 rue Saint-Dominique, 75007 Paris")
 specialty.save!
-specialty = Specialty.create!(title: "Poterie",
-                              details: "Ensemble d'assiettes en céramiques",
-                              price: 15,
-                              category: "ARTISANAT",
-                              user: user,
-                              localisation: user.address)
-specialty.save!
-puts "creating reservations"
-date = DateTime.now + (1..30).to_a.sample.days
-reservation = Reservation.create!(start_date: date,
-                    end_date: date + (1..5).to_a.sample.days,
-                                  comment: "Mes assiettes IKEA ne me plaisent plus, je cherche un nouveau loisir créatif",
-                                  specialty: specialty,
-                                  user: user_jebg,
-                                  status: ["En attente", "Accepté", "Refusé"].sample)
-reservation.save!
+puts "creating reservation"
 
 date = DateTime.now + (1..30).to_a.sample.days
 Reservation.create!(start_date: date,
