@@ -19,10 +19,10 @@ puts "creating Jean-Eudes.BG@gmail.com and azerty login"
 age = DateTime.now - 25.years
 user_jebg = User.create!(email: "Jean-Eudes.BG@gmail.com",
              password: "azerty",
-             first_name: "Jean-Eudes",
-             last_name: "BG",
+             first_name: "Rémi",
+             last_name: "Sans Famille",
              birthdate: age,
-             description: "Salut Biloute, moi c'est Jean-Eude BG, le BG de Paris 17. J'ai #{DateTime.now.year - age.year} ans. L'aprem c'est ricard devant Sardou. Dans la vie j'aime pas les débats: y'a pas à tortiller du cul pour chier droit.",
+             description: "Salut Biloute, moi c'est Rémi, j'ai pas de famille, mais je voudrais bien des amis. J'ai #{DateTime.now.year - age.year} ans. L'aprem c'est ricard devant Sardou. Dans la vie j'aime pas les débats: y'a pas à tortiller du cul pour chier droit.",
              gender: "M",
              address: "32 rue lemercier, 75017, Paris")
 
