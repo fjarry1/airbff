@@ -50,10 +50,10 @@
 
     <%# iteration pour savoir si un user a la specialité en question %>
     <div class="card-container my-5">
-      <div class="title-container">
+      <div class="title-container mx-0">
         <p><strong>Ce service vous est proposé par</strong></p>
       </div>
-      <div class="cards">
+      <div class="cards mx-0">
         <% @users.each do |user| %>
           <% if !user.specialties.first.nil? %>
             <% user.specialties.each do |specialty| %>
@@ -61,16 +61,16 @@
                 <div class="card">
                   <div class="card-img-top" style="background-image:url(<%= cl_image_path user.photos.first.key, crop: :fill, gravity: :face %>)">
                     <%= link_to profil_path(user) do %>
-                    <h5><%= user.first_name %></h5>
+                    <h5 class="card-title"><%= user.first_name %></h5>
                   </div>
                     <div class="card-body">
-                      <p class="card-text"><%= user.description %></p>
+                      <p class="card-text" style="text-decoration: none; color: black;"><%= user.description %></p>
                     </div>
                     <div class="card-body">
                       <% if user.specialties.first.nil? %>
                         <p>Activité favorite: ouvert à TOUT</p>
                       <% else %>
-                        <p>Activité favorite: <%= user.specialties.first.title %></p>
+                        <p style="color: black;">Activité favorite: <%= user.specialties.first.title %></p>
                       <% end %>
                     </div>
                 <% end %>
@@ -88,7 +88,7 @@
 
   <%= link_to root_path do %>
     <div class="button">
-      <i>Retourner aux spécialités</i>
+      <strong style="color: white;">Page d'accueil</strong>
     </div>
   <% end %>
   </div>
