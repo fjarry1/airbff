@@ -5,16 +5,5 @@ Rails app generated with [lewagon/rails-templates](https://github.com/lewagon/ra
 *
 This is a AirBnb like app created with the basic CRUD features (Ruby on rails)
 
-# Setup
-
-gh repo clone fjarry1/airbff </br>
-bundle install </br>
-rails db:drop </br>
-rails db:create </br>
-rails db:migrate </br>
-rails db:seed </br>
-rails db:migrate </br>
-rails s </br>
-
 # Demo
-http://localhost:3000/
+https://airbff-fjarry1.herokuapp.com/
